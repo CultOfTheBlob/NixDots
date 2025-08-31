@@ -5,10 +5,13 @@
 }: {
   home.packages = [
     (pkgs.writeShellScriptBin "pj" ''
-      EXCLUDE="'flake.nix|LICENSE|*.uid|*.import|Builds|media'"
+      EXCLUDE="'flake.nix|LICENSE|*.uid|*.import|Builds|media|Assets'"
 
-      PROJECTS=$(${pkgs.fd}/bin/fd --type=d --hidden --glob '.git' /home/${user}/Projects/)
-      PROJECTS=$(echo "$PROJECTS" | grep -Ff <(fd flake.nix -tf /home/${user}/Projects/ | sed 's|/flake.nix||'))
+      cd /home/${user}/Projects/
+
+      PROJECTS=$(${pkgs.fd}/bin/fd --type=d --hidden --glob '.git' .)
+
+      PROJECTS=$(echo "$PROJECTS" | grep -Ff <(fd flake.nix -tf . | sed 's|/flake.nix||'))
       PROJECTS=$(echo "$PROJECTS" | sed 's|/.git||' | sort -u)
 
       PREVIEW="${pkgs.eza}/bin/eza --tree --git-ignore --color=always --ignore-glob "$EXCLUDE" {}"

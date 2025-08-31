@@ -35,7 +35,7 @@ in {
       }
       {
         label = "Suspend";
-        action = "systemctl suspend";
+        action = "systemctl hybrid-sleep";
         text = "";
         keybind = "l";
       }

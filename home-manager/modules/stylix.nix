@@ -16,14 +16,14 @@
 
     cursor = {
       package = pkgs.graphite-cursors;
-      name = "graphite-dark-nord";
+      name = "graphite-dark";
       size = 16;
     };
 
     iconTheme = {
       enable = true;
-      package = pkgs.oranchelo-icon-theme;
-      dark = "Oranchelo-Beka";
+      package = pkgs.fluent-icon-theme;
+      dark = "Fluent-dark";
     };
 
     fonts = {
@@ -42,7 +42,7 @@
     };
 
     targets = {
-      qt.enable = true;
+      qt.enable = false;
       nvf.enable = false;
       wofi.enable = false;
       hyprlock.enable = false;

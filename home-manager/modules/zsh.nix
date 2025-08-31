@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
-    dotDir = ".config/zsh";
+    dotDir = config.xdg.configHome;
 
     enableCompletion = true;
 
@@ -26,6 +30,8 @@
       fman = "compgen -c | fzf | xargs man";
       fzf = "fzf -m --preview 'bat --style numbers,changes --color=always {}'";
       fzfo = "nvim $(fzf -m --preview 'bat --style numbers,changes --color=always {}')";
+
+      ssh = "kitty +kitten ssh";
 
       x = "exit";
     };

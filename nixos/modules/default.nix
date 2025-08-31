@@ -18,5 +18,6 @@
     ./hardware.nix
     ./steam.nix
     ./gamemode.nix
+    ./virtualization.nix
   ];
 }

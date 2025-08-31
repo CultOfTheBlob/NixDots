@@ -18,7 +18,7 @@
       "workspace 1, title:^(Godot)$"
       "workspace 4, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
       "workspace 3, class:^([Tt]hunar)$"
-      "workspace 10, class:^(com.obsproject.Studio)$"
+      "workspace 8, class:^(com.obsproject.Studio)$"
       "workspace 4, class:^([Ss]team)$"
       "workspace 9, class:^([Dd]iscord)$"
       "workspace 10, class:^([Ss]potify)$"

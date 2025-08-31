@@ -15,16 +15,21 @@
 
     # Apps
     godot-mono
+    godot
     blender
+    kdePackages.dolphin
     xfce.thunar
+    krusader
     vlc
     prismlauncher
     file-roller
-    krita
-    gimp
+    obs-studio
+    inkscape-with-extensions
+    openrgb-with-all-plugins
 
     # Utils
     networkmanagerapplet
     pulseaudio
+    linuxHeaders
   ];
 }
