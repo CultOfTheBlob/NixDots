@@ -42,7 +42,7 @@
     };
 
     targets = {
-      qt.enable = false;
+      qt.enable = true;
       nvf.enable = false;
       wofi.enable = false;
       hyprlock.enable = false;

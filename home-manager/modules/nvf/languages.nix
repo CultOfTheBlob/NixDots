@@ -61,5 +61,17 @@
         server = "pyright";
       };
     };
+
+    clang = {
+      enable = true;
+
+      cHeader = true;
+
+      lsp = {
+        enable = true;
+
+        server = "clangd";
+      };
+    };
   };
 }

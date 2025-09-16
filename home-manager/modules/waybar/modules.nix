@@ -226,7 +226,7 @@
             "title<pj>" = "󰅩 ";
             "title<gdadd>" = "󰅩 ";
             "class<[ss]potify>" = " ";
-            "class<dolphin>" = "󰝰 ";
+            "class<nemo>" = "󰝰 ";
             "class<[tt]hunderbird|[tt]hunderbird-esr>" = " ";
             "class<discord|[ww]ebcord|vesktop|legcord>" = " ";
             "class<subl>" = "󰅳 ";

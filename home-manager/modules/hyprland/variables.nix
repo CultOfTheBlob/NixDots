@@ -3,6 +3,6 @@
     "$mainMod" = "SUPER";
     "$term" = "kitty";
     "$browser" = "firefox";
-    "$files" = "thunar";
+    "$files" = "nemo";
   };
 }

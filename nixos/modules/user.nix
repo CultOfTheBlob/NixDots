@@ -6,7 +6,7 @@
     users.blob = {
       isNormalUser = true;
       description = "Cult Of The Blob";
-      extraGroups = ["networkmanager" "wheel" "storage" "vboxusers"];
+      extraGroups = ["networkmanager" "wheel" "storage"];
     };
   };
 }

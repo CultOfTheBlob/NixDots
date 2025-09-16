@@ -9,7 +9,7 @@
       "6, monitor:DP-2"
       "7, monitor:DP-2"
       "8, monitor:DP-2"
-      "9, monitor:dp-2"
+      "9, monitor:DP-2"
       "10, monitor:DP-2"
     ];
   };

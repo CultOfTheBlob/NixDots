@@ -19,5 +19,8 @@
     ./steam.nix
     ./gamemode.nix
     ./virtualization.nix
+    ./kanata.nix
+    ./mount.nix
+    ./polkit.nix
   ];
 }

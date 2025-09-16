@@ -33,6 +33,8 @@
 
       ssh = "kitty +kitten ssh";
 
+      download = "axel --alternate -n 20";
+
       x = "exit";
     };
 

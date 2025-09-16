@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./modules
-    ./services
   ];
 
   environment.systemPackages = [
