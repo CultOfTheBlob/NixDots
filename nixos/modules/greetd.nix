@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   services.greetd = {
-    enable = true;
+    enable = false;
   };
 
   programs.regreet = {
-    enable = true;
+    enable = false;
 
     theme = {
       name = "Tokyonight-Dark";

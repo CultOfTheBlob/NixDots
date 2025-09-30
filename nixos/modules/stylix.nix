@@ -4,15 +4,9 @@
 
     autoEnable = false;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
-    image = ./assets/stylixWallpaper.png;
-
-    cursor = {
-      package = pkgs.graphite-cursors;
-      name = "graphite-dark-nord";
-      size = 16;
-    };
+    image = ./assets/bootWallpaper.png;
 
     fonts = {
       monospace = {
@@ -25,16 +19,11 @@
       };
       serif = {
         package = pkgs.dejavu_fonts;
-        name = "Dejavu Serif";
+        name = "DejaVu Serif";
       };
     };
 
     targets = {
-      grub = {
-        enable = true;
-        useWallpaper = true;
-      };
-
       console.enable = true;
     };
   };

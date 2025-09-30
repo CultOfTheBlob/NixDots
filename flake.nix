@@ -59,6 +59,7 @@
       modules = [
         ./nixos/configuration.nix
         ./hosts/${host}/hardware-configuration.nix
+
         inputs.stylix.nixosModules.stylix
       ];
     };

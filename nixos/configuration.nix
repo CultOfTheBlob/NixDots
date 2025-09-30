@@ -5,12 +5,11 @@
 }: {
   imports = [
     ./modules
+    ../home-manager/colors
   ];
 
-  environment.systemPackages = [
-    pkgs.home-manager
-
-    pkgs.libsForQt5.qt5.qtgraphicaleffects
+  environment.systemPackages = with pkgs; [
+    home-manager
   ];
 
   networking.hostName = host;
@@ -19,7 +18,7 @@
     stateVersion = "24.11";
 
     nixos = {
-      label = "Main";
+      label = ":-:";
     };
   };
 

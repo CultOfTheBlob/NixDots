@@ -22,5 +22,7 @@
     ./kanata.nix
     ./mount.nix
     ./polkit.nix
+    ./xdg.nix
+    ./display-manager.nix
   ];
 }

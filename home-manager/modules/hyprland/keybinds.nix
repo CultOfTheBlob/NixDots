@@ -7,7 +7,7 @@
     bind = [
       #GENERAL
       "$mainMod, Q, killactive"
-      "$mainMod ALT, Q, exec, kill $(hyprctl activewindow | grep -o 'pid: [0-9]*' | cut -d' ' -f2)"
+      "$mainMod ALT, Q, exec, hyprctl kill"
 
       "$mainMod, F, fullscreen"
       "$mainMod SHIFT, F, togglefloating"
@@ -18,16 +18,16 @@
       #APPS
       "$mainMod, Return, exec, $term"
       "$mainMod, B, exec, $browser"
-      "$mainMod, D, exec, $files"
+      "$mainMod, D, exec, dolphin"
 
-      #DMENU
-      "$mainMod, A, exec, pkill wofi || wofi --show drun"
-      "$mainMod, W, exec, pkill wofi || ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu"
+      #LAUNCHER
+      "$mainMod, A, exec, pkill rofi || rofi -show drun -show-icons"
+      "$mainMod ALT, W, exec, pkill rofi || rofi -show window"
+      "$mainMod, W, exec, pkill walker || ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu"
 
       #SERVICES
       "$mainMod, N, exec, swaync-client -t -sw"
-      "CTRL ALT, L, exec, $scriptsDir/LockScreen.sh"
-      "$mainMod, P, exec, pkill wlogout || wlogout"
+      "$mainMod, P, exec, pkill wlogout || wlogout --buttons-per-row 6 --primary-monitor DP-1"
 
       "$mainMod ALT, Return, exec, pypr toggle term"
       "$mainMod ALT, B, exec, pypr toggle blue"
@@ -95,11 +95,6 @@
       "ALT, tab, bringactivetotop"
 
       "$mainMod, V, togglesplit"
-
-      "$mainMod, mouse_down, workspace, e+1"
-      "$mainMod, mouse_up, workspace, e-1"
-      "$mainMod, period, workspace, e+1"
-      "$mainMod, comma, workspace, e-1"
     ];
 
     bindm = [

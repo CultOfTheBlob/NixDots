@@ -14,9 +14,8 @@
     ./bat.nix
     ./waybar
     ./swaync.nix
-    ./wofi.nix
     ./btop.nix
-    ./ohMyPosh.nix
+    ./oh-my-posh.nix
     ./lazygit.nix
     ./wlogout.nix
     ./spotify.nix
@@ -25,7 +24,13 @@
     ./godot.nix
     ./mangohud.nix
     ./lutris.nix
-    ./desktopEntries.nix
     ./fd.nix
+    ./qt.nix
+    ./gtk.nix
+    ./xdg.nix
+    ./mpv.nix
+    ./cursor.nix
+    ./networkmanager-dmenu.nix
+    ./rofi.nix
   ];
 }

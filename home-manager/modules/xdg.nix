@@ -2,7 +2,9 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      xdgOpenUsePortal = true;
+      extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
+      configPackages = [pkgs.kdePackages.xdg-desktop-portal-kde];
     };
   };
 }

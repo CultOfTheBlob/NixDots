@@ -173,8 +173,8 @@
         };
 
         "custom/menu" = {
-          format = "";
-          on-click = "pkill wofi || wofi";
+          format = "";
+          on-click = "pkill rofi || rofi -show drun";
           tooltip = true;
           tooltip-format = "left click: rofi menu";
         };
@@ -195,7 +195,7 @@
 
         "custom/power" = {
           format = "⏻ ";
-          on-click = "pkill wlogout || wlogout";
+          on-click = "pkill wlogout || wlogout --buttons-per-row 6 --primary-monitor DP-1";
           tooltip = true;
           tooltip-format = "left click: logout menu";
         };
@@ -217,7 +217,7 @@
             "title<.*amazon.*>" = " ";
             "title<.*reddit.*>" = " ";
             "title<.*picture-in-picture.*>" = " ";
-            "class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser>" = " ";
+            "class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser>" = " ";
             "class<org.prismlauncher.PrismLauncher>" = "󰍳 ";
             "class<godot>" = " ";
             "class<kitty>" = " ";
@@ -226,7 +226,7 @@
             "title<pj>" = "󰅩 ";
             "title<gdadd>" = "󰅩 ";
             "class<[ss]potify>" = " ";
-            "class<nemo>" = "󰝰 ";
+            "class<org.kde.dolphin>" = "󰝰 ";
             "class<[tt]hunderbird|[tt]hunderbird-esr>" = " ";
             "class<discord|[ww]ebcord|vesktop|legcord>" = " ";
             "class<subl>" = "󰅳 ";

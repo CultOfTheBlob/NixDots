@@ -1,6 +1,6 @@
 {
   imports = [
     ./colors.nix
-    ./tokyoNightDark.nix
+    ./nord.nix
   ];
 }

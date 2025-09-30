@@ -1,8 +1,4 @@
-{
-  config,
-  user,
-  ...
-}: let
+{user, ...}: let
   assets = "/home/${user}/.nix/home-manager/modules/assets/wlogout/";
 in {
   programs.wlogout = {
@@ -13,23 +9,23 @@ in {
         label = "Lock";
         action = "pidof hyprlock || hyprlock -q";
         text = "";
-        keybind = "l";
+        keybind = "enter";
       }
       {
         label = "Reboot";
         action = "systemctl reboot";
         text = "";
-        keybind = "l";
+        keybind = "r";
       }
       {
         label = "Shutdown";
         action = "systemctl poweroff";
         text = "";
-        keybind = "l";
+        keybind = "p";
       }
       {
         label = "Logout";
-        action = "loginctl kill-session $XDG_SESSION_ID";
+        action = "uwsm stop -r hyprland-uwsm";
         text = "";
         keybind = "l";
       }
@@ -37,13 +33,13 @@ in {
         label = "Suspend";
         action = "systemctl hybrid-sleep";
         text = "";
-        keybind = "l";
+        keybind = "s";
       }
       {
         label = "Hibernate";
         action = "systemctl hibernate";
         text = "";
-        keybind = "l";
+        keybind = "h";
       }
     ];
 
@@ -53,30 +49,44 @@ in {
       */
       ''
         * {
-          font-family: JetBrains Mono, Symbols Nerd Font;
+          font-family: JetBrainsMono Nerd Font Mono;
           font-size: 24px;
           transition-duration: 0.7s;
         }
 
         window {
-          background-color: #${config.colors.base00};
+          background-color: rgba(46, 52, 64, 0.5);
         }
 
         button {
-          background-color: #${config.colors.base00};
+          border-radius: 20px;
+          margin: 10px;
+          color: @inverse_surface;
+          border-color: @inverse_surface;
+          background-color: rgba(59, 66, 82, 0.5);
+          outline-style: none;
           border-style: solid;
-          border-radius: 25px;
+          border-width: 0px;
           background-repeat: no-repeat;
           background-position: center;
-          background-size: 15%;
-          margin: 15px;
+          background-size: 20%;
+          box-shadow: 0 0 12px 2px rgba(59, 66, 82, 0.6);
+          text-shadow: none;
+          animation: gradient_f 20s ease-in infinite;
+          transition: box-shadow 0.75s ease;
         }
 
-        button:focus,
-        button:active,
-        button:hover {
-          background-color: #${config.colors.base05};
-          background-size: 20%;
+        button:hover,
+        button:focus {
+          background-color: rgb(129, 161, 193);
+          background-size: 30%;
+          box-shadow: 0 0 12px 2px rgba(129, 161, 193, 0.6);
+          animation: gradient_f 20s ease-in infinite;
+          transition: all 0.75s cubic-bezier(.55,0.0,.28,1.682);
+        }
+
+        button span {
+          font-size: 1.2em;
         }
 
         #Shutdown {

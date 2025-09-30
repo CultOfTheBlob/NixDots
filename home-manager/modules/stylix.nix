@@ -6,25 +6,9 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
-    image = ./assets/stylixWallpaper.png;
-
-    override = {
-      base0D = "7aa2f7";
-    };
-
-    cursor = {
-      package = pkgs.graphite-cursors;
-      name = "graphite-dark";
-      size = 16;
-    };
-
-    iconTheme = {
-      enable = true;
-      package = pkgs.fluent-icon-theme;
-      dark = "Fluent-dark";
-    };
+    image = ./assets/wallpaper.png;
 
     fonts = {
       monospace = {
@@ -37,20 +21,19 @@
       };
       serif = {
         package = pkgs.dejavu_fonts;
-        name = "Dejavu Serif";
+        name = "DejaVu Serif";
       };
     };
 
     targets = {
-      qt.enable = true;
+      gtk.enable = false;
       nvf.enable = false;
-      wofi.enable = false;
+      rofi.enable = false;
       hyprlock.enable = false;
       waybar.enable = false;
 
-      firefox = {
-        profileNames = [user];
-      };
+      firefox = {profileNames = [user];};
+      floorp = {profileNames = [user];};
     };
   };
 }

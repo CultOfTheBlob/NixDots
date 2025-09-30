@@ -7,33 +7,54 @@
     yazi
     fastfetch
     dust
-
-    # Command line utils
-    git
-    nix-output-monitor
-    libnotify
-    wl-clipboard
     axel
     caligula
+    git
+    nix-output-monitor
+
+    # Command line utils
+    libnotify
+    wl-clipboard
+    kdePackages.kdf
+    kdePackages.kio
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
+    kdePackages.kio-admin
+    kdePackages.qtwayland
+    kdePackages.plasma-integration
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.breeze-icons
+    kdePackages.qtsvg
+    kdePackages.kservice
+    kdePackages.kmenuedit
+    kdePackages.kde-cli-tools
+    kdePackages.plasma-workspace
 
     # Apps
     godot-mono
     blender
-    nemo-with-extensions
-    vlc
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.kompare
     prismlauncher
     file-roller
     obs-studio
+    krita
     inkscape-with-extensions
-    openrgb-with-all-plugins
+    gimp-with-plugins
     xfce.ristretto
     obsidian
     gparted
+    qalculate-gtk
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
 
     # Utils
     networkmanagerapplet
     pulseaudio
     linuxHeaders
     xfce.tumbler
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
   ];
 }

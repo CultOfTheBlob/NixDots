@@ -13,5 +13,17 @@
       paste_action = "no_op";
       clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
     };
+
+    keybindings = {
+      "ctrl+shift+t" = "new_tab";
+      "ctrl+shift+w" = "close_tab";
+      "ctrl+shift+l" = "next_tab";
+      "ctrl+shift+h" = "previous_tab";
+
+      "ctrl+shift+enter" = "new_window";
+      "ctrl+alt+q" = "close_window";
+      "ctrl+alt+]" = "next_window";
+      "ctrl+alt+[" = "previous_window";
+    };
   };
 }
