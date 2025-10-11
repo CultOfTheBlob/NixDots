@@ -10,6 +10,8 @@
 
     image = ./assets/wallpaper.png;
 
+    polarity = "dark";
+
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
@@ -31,8 +33,8 @@
       rofi.enable = false;
       hyprlock.enable = false;
       waybar.enable = false;
+      yazi.enable = false;
 
-      firefox = {profileNames = [user];};
       floorp = {profileNames = [user];};
     };
   };

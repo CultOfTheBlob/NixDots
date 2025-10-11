@@ -14,8 +14,6 @@ in {
       display-ssh = "Connect:";
 
       drun-display-format = "{icon} {name}";
-
-      # show-icons = true;
     };
 
     modes = [

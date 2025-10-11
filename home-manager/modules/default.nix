@@ -32,5 +32,6 @@
     ./cursor.nix
     ./networkmanager-dmenu.nix
     ./rofi.nix
+    ./yazi.nix
   ];
 }

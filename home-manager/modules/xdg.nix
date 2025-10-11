@@ -3,8 +3,16 @@
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
-      configPackages = [pkgs.kdePackages.xdg-desktop-portal-kde];
+      extraPortals = with pkgs; [
+        kdePackages.xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
+      configPackages = with pkgs; [
+        kdePackages.xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
     };
   };
 }

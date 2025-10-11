@@ -41,6 +41,12 @@
               keyword = "type";
               url = "https://monkeytype.com";
             }
+            {
+              name = "noogle";
+              tags = ["nix"];
+              keyword = "noogle";
+              url = "https://noogle.dev";
+            }
           ];
         };
 
@@ -49,6 +55,7 @@
             proton-pass
             ublock-origin
             kristofferhagen-nord-theme
+            darkreader
           ];
         };
 
@@ -70,13 +77,18 @@
           toolkit.legacyUserProfileCustomizations.stylesheets = true;
           svg.context-properties.content.enabled = true;
 
-          widget.transparent-windows = true;
+          widget = {
+            transparent-windows = true;
+
+            windows.mica = {
+              extra = true;
+              popups = 2;
+              toplevel-backdrop = 2;
+            };
+            macos.titlebar-blend-mode.behind-window = true;
+          };
 
           "widget.windows.mica" = true;
-          "widget.windows.mica.extra" = true;
-          "widget.windows.mica.popups" = 2;
-          "widget.windows.mica.toplevel-backdrop" = 2;
-          "widget.macos.titlebar-blend-mode.behind-window" = true;
 
           font.name = {
             monospace.x-western = "JetBrainsMono Nerd Font Mono";
@@ -389,6 +401,10 @@
                 ''));
             };
           };
+
+          general.useragent.override = ''
+            Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.3
+          '';
         };
       };
     };

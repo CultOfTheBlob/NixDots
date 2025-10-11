@@ -22,6 +22,7 @@
       ".." = "cd ..";
 
       lg = "lazygit";
+      spf = "superfile";
 
       ls = "${eza}/bin/eza -a --icons";
       ll = "${eza}/bin/eza -al --icons";

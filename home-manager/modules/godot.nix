@@ -1,8 +1,14 @@
 {
+  pkgs,
+  config,
   lib,
   user,
   ...
-}: {
+}: let
+  formatColor = color: "Color(${builtins.readFile (pkgs.runCommand "color" {} ''
+    ${pkgs.pastel}/bin/pastel format rgb-float ${color} | sed -E 's/^rgb\\(|\\)$//' > $out
+  '')})";
+in {
   xdg.configFile = {
     godot-settings = {
       target = "godot/editor_settings-4.4.tres";
@@ -24,8 +30,8 @@
         interface/editor/main_font_bold = "/home/${user}/.nix/home-manager/modules/assets/godot/DejaVuSansCondensed-Bold.ttf"
         interface/editor/code_font = "/home/${user}/.nix/home-manager/modules/assets/godot/JetBrainsMonoNerdFontMono-Regular.ttf"
         interface/theme/preset = "Custom"
-        interface/theme/base_color = Color(0.18, 0.204, 0.251, 1)
-        interface/theme/accent_color = Color(0.22, 0.356, 0.533, 1)
+        interface/theme/base_color = ${formatColor config.colors.base00}
+        interface/theme/accent_color = ${formatColor config.colors.base0D}
         interface/theme/contrast = 0.3
         interface/theme/corner_radius = 5
         interface/theme/custom_theme = "/home/${user}/.nix/home-manager/modules/assets/godot/minimal_theme.tres"

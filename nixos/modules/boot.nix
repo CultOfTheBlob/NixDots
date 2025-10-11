@@ -5,6 +5,8 @@
 }: {
   boot = {
     loader = {
+      timeout = 4;
+
       limine = {
         enable = true;
 

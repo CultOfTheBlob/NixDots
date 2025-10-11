@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     # Command line apps
     neovim
-    yazi
     fastfetch
     dust
     axel
@@ -15,20 +14,10 @@
     # Command line utils
     libnotify
     wl-clipboard
-    kdePackages.kdf
-    kdePackages.kio
-    kdePackages.kio-fuse
-    kdePackages.kio-extras
-    kdePackages.kio-admin
-    kdePackages.qtwayland
-    kdePackages.plasma-integration
-    kdePackages.kdegraphics-thumbnailers
-    kdePackages.breeze-icons
-    kdePackages.qtsvg
-    kdePackages.kservice
-    kdePackages.kmenuedit
-    kdePackages.kde-cli-tools
-    kdePackages.plasma-workspace
+    rich-cli
+    trash-cli
+    mediainfo
+    ouch
 
     # Apps
     godot-mono
@@ -56,5 +45,19 @@
     xfce.tumbler
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
+    kdePackages.kdf
+    kdePackages.kio
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
+    kdePackages.kio-admin
+    kdePackages.qtwayland
+    kdePackages.plasma-integration
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.breeze-icons
+    kdePackages.qtsvg
+    kdePackages.kservice
+    kdePackages.kmenuedit
+    kdePackages.kde-cli-tools
+    kdePackages.plasma-workspace
   ];
 }
