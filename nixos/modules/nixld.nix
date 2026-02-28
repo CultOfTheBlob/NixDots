@@ -8,14 +8,14 @@
       libGL
       vulkan-loader
       libx11
-      xorg.libXcursor
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXinerama
+      libXcursor
+      libXext
+      libXfixes
+      libXi
+      libXinerama
       libxkbcommon
-      xorg.libXrandr
-      xorg.libXrender
+      libXrandr
+      libXrender
       dbus
       wayland
       libdecor

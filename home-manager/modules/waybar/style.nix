@@ -6,7 +6,7 @@
       */
       ''
         * {
-          font-family: "JetBrainsMono Nerd Font";
+          font-family: "JetBrainsMono Nerd Font Propo";
           font-weight: bold;
           min-height: 0;
           font-size: 97%;

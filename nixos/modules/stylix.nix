@@ -25,6 +25,8 @@
 
     targets = {
       console.enable = true;
+      grub.enable = true;
+      grub.useWallpaper = true;
     };
   };
 }

@@ -14,5 +14,8 @@
     ./tabline.nix
     ./dashboard.nix
     ./terminals.nix
+    ./latex.nix
+    ./utility.nix
+    ./snippets.nix
   ];
 }

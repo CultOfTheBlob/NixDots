@@ -10,6 +10,8 @@
 
   environment.systemPackages = with pkgs; [
     home-manager
+
+    nerd-fonts.jetbrains-mono
   ];
 
   networking.hostName = host;

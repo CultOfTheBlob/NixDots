@@ -9,13 +9,13 @@
       enable = true;
 
       format = {
-        type = "alejandra";
+        type = ["alejandra"];
       };
 
       lsp = {
         enable = true;
 
-        server = "nixd";
+        servers = ["nixd"];
       };
     };
 
@@ -25,8 +25,7 @@
       lsp = {
         enable = true;
 
-        server = "omnisharp";
-        package = pkgs.omnisharp-roslyn;
+        servers = ["roslyn_ls"];
       };
     };
 
@@ -42,13 +41,13 @@
       format = {
         enable = true;
 
-        type = "prettierd";
+        type = ["prettierd"];
       };
 
       lsp = {
         enable = true;
 
-        server = "marksman";
+        servers = ["marksman"];
       };
     };
 
@@ -58,7 +57,7 @@
       lsp = {
         enable = true;
 
-        server = "pyright";
+        servers = ["pyright"];
       };
     };
 
@@ -70,7 +69,17 @@
       lsp = {
         enable = true;
 
-        server = "clangd";
+        servers = ["clangd"];
+      };
+    };
+
+    rust = {
+      enable = true;
+
+      lsp = {
+        enable = true;
+
+        package = pkgs.rust-analyzer;
       };
     };
   };

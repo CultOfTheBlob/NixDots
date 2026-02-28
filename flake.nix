@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -40,6 +41,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -47,6 +53,8 @@
     home-manager,
     ...
   } @ inputs: let
+    pkgsStable = inputs.nixpkgs-stable.legacyPackages.${system};
+
     system = "x86_64-linux";
     user = "blob";
 
@@ -54,7 +62,7 @@
     host = builtins.elemAt hosts 0;
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs user host;};
+      specialArgs = {inherit inputs user host pkgsStable;};
 
       modules = [
         ./nixos/configuration.nix
@@ -67,7 +75,7 @@
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
 
-      extraSpecialArgs = {inherit inputs user system;};
+      extraSpecialArgs = {inherit inputs user system pkgsStable;};
 
       modules = [
         ./home-manager/home.nix

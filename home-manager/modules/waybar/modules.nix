@@ -11,7 +11,7 @@
         };
 
         "cpu" = {
-          format = "{usage}% 󰍛";
+          format = "{usage}%󰍛";
           interval = 1;
           min-length = 5;
           on-click = "pypr toggle proc";
@@ -19,7 +19,7 @@
 
         "memory" = {
           interval = 10;
-          format = "{percentage}% 󰾆";
+          format = "{percentage}%󰾆";
           on-click = "pypr toggle mem";
           tooltip = true;
           tooltip-format = "{used:0.1f}GB/{total:0.1f}G";
@@ -29,7 +29,7 @@
           interval = 30;
           path = "/";
           on-click = "pypr toggle mem";
-          format = "{percentage_used}% 󰋊";
+          format = "{percentage_used}%󰋊";
           tooltip = true;
           tooltip-format = "{used} used out of {total} on {path} ({percentage_used}%)";
         };
@@ -57,14 +57,14 @@
 
         "mpris" = {
           interval = 10;
-          format = "{player_icon} ";
-          format-paused = "{status_icon} <i>{dynamic}</i>";
+          format = "{player_icon}";
+          format-paused = "{status_icon}<i>{dynamic}</i>";
           on-click-middle = "playerctl play-pause";
           on-click = "playerctl previous";
           on-click-right = "playerctl next";
           scroll-step = 5.0;
-          on-scroll-up = "pactl -- set-sink-volume 0 +5%";
-          on-scroll-down = "pactl -- set-sink-volume 0 -5%";
+          on-scroll-up = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
+          on-scroll-down = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
           smooth-scrolling-threshold = 1;
           player-icons = {
             chromium = "";
@@ -111,14 +111,14 @@
           interval = 1;
           format = "{ifname}";
           on-click = "pypr toggle net";
-          format-wifi = "{icon}  {bandwidthUpBytes}  {bandwidthDownBytes}";
-          format-ethernet = "󰌘  {bandwidthUpBytes}  {bandwidthDownBytes}";
+          format-wifi = "{icon}{bandwidthUpBytes} {bandwidthDownBytes}";
+          format-ethernet = "󰌘{bandwidthUpBytes} {bandwidthDownBytes}";
           format-disconnected = "󰌙";
           tooltip-format = "{ipaddr}";
-          format-linked = "󰈁 {ifname} (No IP)";
+          format-linked = "󰈁{ifname} (No IP)";
           tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
-          tooltip-format-ethernet = "{ifname} 󰌘";
-          tooltip-format-disconnected = "󰌙 disconnected";
+          tooltip-format-ethernet = "{ifname}󰌘";
+          tooltip-format-disconnected = "󰌙disconnected";
           min-length = 24;
           max-length = 24;
           format-icons = [
@@ -131,8 +131,8 @@
         };
 
         "pulseaudio" = {
-          format = "{icon} {volume}%";
-          format-bluetoot = "{icon} 󰂰 {volume}%";
+          format = "{icon}{volume}%";
+          format-bluetoot = "{icon}󰂰{volume}%";
           format-muted = "󰖁";
           format-icons = {
             eadphone = "";
@@ -152,49 +152,35 @@
             ];
           };
           scroll-step = 5.0;
-          on-click = "pactl -- set-sink-mute 0 toggle";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
-          on-scroll-up = "pactl -- set-sink-volume 0 +5%";
-          on-scroll-down = "pactl -- set-sink-volume 0 -5%";
+          on-scroll-up = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
+          on-scroll-down = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
           tooltip-format = "{icon} {desc} | {volume}%";
           smooth-scrolling-threshold = 1;
         };
 
         "pulseaudio#microphone" = {
           format = "{format_source}";
-          format-source = " {volume}%";
+          format-source = "{volume}%";
           format-source-muted = "";
-          on-click = "pactl -- set-source-mute 0 toggle";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           on-click-right = "pavucontrol -t 4";
-          on-scroll-up = "pactl -- set-source-volume 0 +5%";
-          on-scroll-down = "pactl -- set-source-volume 0 -5%";
+          on-scroll-up = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SOURCE@ 5%+";
+          on-scroll-down = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SOURCE@ 5%-";
           tooltip-format = "{source_desc} | {source_volume}%";
           scroll-step = 5;
         };
 
         "custom/menu" = {
           format = "";
-          on-click = "pkill rofi || rofi -show drun";
+          on-click = "pkill rofi || rofi -show drun -show-icons";
           tooltip = true;
           tooltip-format = "left click: rofi menu";
         };
 
-        "custom/bluetui" = {
-          format = " ";
-          on-click = "pypr toggle blue";
-          tooltip = true;
-          tooltip-format = "left click: bluetooth menu";
-        };
-
-        "custom/drop-term" = {
-          format = " ";
-          on-click = "pypr toggle term";
-          tooltip = true;
-          tooltip-format = "launch terminal";
-        };
-
         "custom/power" = {
-          format = "⏻ ";
+          format = "⏻";
           on-click = "pkill wlogout || wlogout --buttons-per-row 6 --primary-monitor DP-1";
           tooltip = true;
           tooltip-format = "left click: logout menu";
@@ -211,36 +197,25 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           format = "{icon} {windows}";
           format-window-separator = " ";
-          window-rewrite-default = " ";
+          window-rewrite-default = "";
           window-rewrite = {
-            "title<.*youtube.*>" = " ";
-            "title<.*reddit.*>" = " ";
-            "title<.*picture-in-picture.*>" = " ";
-            "class<floorp>" = " ";
-            "class<org.prismlauncher.PrismLauncher>" = "󰍳 ";
-            "class<godot>" = " ";
-            "class<kitty>" = " ";
-            "title<nv>" = "󰅩 ";
-            "class<[ss]potify>" = " ";
-            "class<org.kde.dolphin>" = "󰝰 ";
-            "title<Yazi: .*>" = " ";
-            "class<[tt]hunderbird|[tt]hunderbird-esr>" = " ";
-            "class<discord|[ww]ebcord|vesktop|legcord>" = " ";
-            "class<mpv>" = " ";
-            "class<obsidian>" = " ";
-            "class<virt-manager>" = " ";
-            "class<libreoffice-writer>" = " ";
-            "class<libreoffice-startcenter>" = "󰏆 ";
-            "class<com.obsproject.studio>" = " ";
-            "class<polkit-gnome-authentication-agent-1>" = "󰒃 ";
-            "class<vlc>" = "󰕼 ";
-            "class<blue>" = " ";
-            "class<proc>" = " ";
-            "class<net>" = "󰛳 ";
-            "class<mem>" = " ";
-            "class<cpu>" = " ";
-            "class<clock>" = "󰥔 ";
-            "class<orage>" = " ";
+            "title<.*picture-in-picture.*>" = "";
+            "class<floorp>" = "";
+            "class<Element>" = "󰵅";
+            "class<org.prismlauncher.PrismLauncher>" = "󰍳";
+            "class<org.godotengine.*>" = "";
+            "class<kitty>" = "";
+            "title<nv>" = "󰅩";
+            "class<blender>" = "";
+            "class<[ss]potify>" = "";
+            "class<org.kde.dolphin>" = "󰝰";
+            "title<yazi>" = "";
+            "title<Yazi: .*>" = "";
+            "class<discord|[ww]ebcord|vesktop|legcord>" = "";
+            "class<mpv>" = "";
+            "class<obsidian>" = "";
+            "class<com.obsproject.studio>" = "";
+            "class<steam>" = "󰓓";
           };
         };
 

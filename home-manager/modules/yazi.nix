@@ -28,9 +28,9 @@
         git
         mount
         lazygit
-        diff
         chmod
         mediainfo
+        duckdb
         ;
     };
 
@@ -48,6 +48,10 @@
     };
 
     settings = {
+      mgr = {
+        ratio = [1 2 5];
+      };
+
       tasks = {
         image_alloc = 1073741824;
       };
@@ -64,8 +68,12 @@
       plugin = {
         prepend_previewers = [
           {
-            name = "*.csv";
-            run = "rich-preview";
+            name = "*/";
+            run = "piper -- ${pkgs.eza}/bin/eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes $1";
+          }
+          {
+            name = "*.tar*";
+            run = "piper -- ouch list --tree --gitignore $1";
           }
           {
             name = "*.md";
@@ -80,16 +88,32 @@
             run = "rich-preview";
           }
           {
+            name = "*.csv";
+            run = "duckdb";
+          }
+          {
+            name = "*.tsv";
+            run = "duckdb";
+          }
+          {
             name = "*.json";
-            run = "rich-preview";
+            run = "duckdb";
           }
           {
-            name = "*/";
-            run = "piper -- ${pkgs.eza}/bin/eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes $1";
+            name = "*.parquet";
+            run = "duckdb";
           }
           {
-            name = "*.tar*";
-            run = "piper -- ouch list --tree --gitignore $1";
+            name = "*.xlsx";
+            run = "duckdb";
+          }
+          {
+            name = "*.db";
+            run = "duckdb";
+          }
+          {
+            name = "*.duckdb";
+            run = "duckdb";
           }
           {
             mime = "{audio,video,image}/*";
@@ -106,6 +130,31 @@
         ];
 
         prepend_preloaders = [
+          {
+            name = "*.csv";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.tsv";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.json";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.parquet";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.xlsx";
+            run = "duckdb";
+            multi = false;
+          }
           {
             mime = "{audio,video,image}/*";
             run = "mediainfo";
@@ -183,20 +232,26 @@
         }
 
         {
-          on = ["D" "c"];
-          run = "plugin diff";
+          on = ["D"];
+          run = "shell --block -- diff -Naur $1 $0 | bat --paging=always";
           desc = "create diff";
-        }
-        {
-          on = ["D" "p"];
-          run = "shell --block -- wl-paste | bat --paging=always";
-          desc = "preview diff";
         }
 
         {
           on = ["c" "m"];
           run = "plugin chmod";
           desc = "chmod selected files";
+        }
+
+        {
+          on = "H";
+          run = "plugin duckdb -1";
+          desc = "scroll one column to the left";
+        }
+        {
+          on = "L";
+          run = "plugin duckdb +1";
+          desc = "scroll one column to the right";
         }
       ];
     };
@@ -396,6 +451,17 @@
             "th.git.ignored_sign" = "";
             "th.git.deleted_sign" = "";
             "th.git.updated_sign" = "󰚰";
+          }
+        })
+
+        require("duckdb"):setup(${
+          toLua {}
+          {
+            mode = "summarized";
+            cache_size = 1000;
+            row_id = "dynamic";
+            minmax_column_width = 21;
+            culomn_fit_fator = 10.0;
           }
         })
       '';

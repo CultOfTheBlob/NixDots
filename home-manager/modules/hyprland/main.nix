@@ -1,4 +1,8 @@
 {
+  lib,
+  config,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -7,6 +11,8 @@
         border_size = "2";
         gaps_in = "3";
         gaps_out = "4";
+
+        "col.active_border" = lib.mkForce "rgba(${config.colors.base0D}ee) rgba(${config.colors.base07}ee) 45deg";
 
         resize_on_border = "true";
 
@@ -19,6 +25,7 @@
 
       misc = {
         disable_splash_rendering = "true";
+        disable_xdg_env_checks = "true";
         vfr = "true";
         mouse_move_enables_dpms = "true";
         enable_swallow = "true";

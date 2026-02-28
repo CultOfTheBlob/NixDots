@@ -6,36 +6,10 @@
         mode = "n";
         action = "o/**/<Esc>hi<Enter><Enter><Esc>ka<Space>";
       }
-
       {
-        key = "y";
+        key = "gB";
         mode = "n";
-        action = "\"+y";
-      }
-      {
-        key = "y";
-        mode = "v";
-        action = "\"+y";
-      }
-      {
-        key = "p";
-        mode = "n";
-        action = "\"+p";
-      }
-      {
-        key = "p";
-        mode = "v";
-        action = "\"+p";
-      }
-      {
-        key = "x";
-        mode = "n";
-        action = "\"+x";
-      }
-      {
-        key = "x";
-        mode = "v";
-        action = "\"+x";
+        action = "O/**/<Esc>hi<Enter><Enter><Esc>ka<Space>";
       }
 
       {
@@ -127,24 +101,35 @@
       }
 
       {
-        key = "<Up>";
-        mode = "n";
-        action = "<Nop>";
+        key = "<C-I>";
+        mode = "i";
+        action = "<cmd>lua require('luasnip').jump(1)<CR>";
       }
       {
-        key = "<Down>";
-        mode = "n";
-        action = "<Nop>";
+        key = "<C-E>";
+        mode = "i";
+        action = "<cmd>lua require('luasnip').jump(-1)<CR>";
+      }
+
+      {
+        key = "<up>";
+        mode = ["n" "i"];
+        action = "<nop>";
       }
       {
-        key = "<Right>";
-        mode = "n";
-        action = "<Nop>";
+        key = "<down>";
+        mode = ["n" "i"];
+        action = "<nop>";
       }
       {
-        key = "<Left>";
-        mode = "n";
-        action = "<Nop>";
+        key = "<left>";
+        mode = ["n" "i"];
+        action = "<nop>";
+      }
+      {
+        key = "<right>";
+        mode = ["n" "i"];
+        action = "<nop>";
       }
     ];
   };

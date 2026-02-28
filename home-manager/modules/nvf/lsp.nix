@@ -45,12 +45,20 @@
       enable = true;
 
       sources = {
-        gdscript = ''
-          vim.lsp.enable("gdscript")
-        '';
-        gdshader = ''
-          vim.lsp.enable("gdshader_lsp")
-        '';
+        gdscript =
+          /*
+          lua
+          */
+          ''
+            vim.lsp.enable("gdscript")
+          '';
+        gdshader =
+          /*
+          lua
+          */
+          ''
+            vim.lsp.enable("gdshader_lsp")
+          '';
       };
     };
 

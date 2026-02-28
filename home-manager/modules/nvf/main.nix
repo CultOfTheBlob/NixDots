@@ -21,6 +21,7 @@
         shiftwidth = 2;
         expandtab = true;
         mouse = "";
+        clipboard = "unnamedplus";
       };
 
       autocmds = [
@@ -44,14 +45,6 @@
           pattern = ["gdshader"];
         }
       ];
-
-      clipboard = {
-        registers = "unnamedplus";
-
-        providers = {
-          wl-copy.enable = true;
-        };
-      };
     };
   };
 }

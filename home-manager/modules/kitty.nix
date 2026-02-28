@@ -10,20 +10,20 @@
       wheel_scroll_min_lines = 1;
       cursor_trail = 5;
       enable_audio_bell = false;
-      paste_action = "no_op";
+      enabled_layouts = "horizontal";
       clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
     };
 
     keybindings = {
       "ctrl+shift+t" = "new_tab";
       "ctrl+shift+w" = "close_tab";
-      "ctrl+shift+l" = "next_tab";
-      "ctrl+shift+h" = "previous_tab";
+      "ctrl+shift+]" = "next_tab";
+      "ctrl+shift+[" = "previous_tab";
 
-      "ctrl+shift+enter" = "new_window";
+      "ctrl+shift+enter" = "launch --location=hsplit";
       "ctrl+alt+q" = "close_window";
-      "ctrl+alt+]" = "next_window";
-      "ctrl+alt+[" = "previous_window";
+      "ctrl+shift+l" = "next_window";
+      "ctrl+shift+h" = "previous_window";
     };
   };
 }

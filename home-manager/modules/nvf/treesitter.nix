@@ -6,6 +6,7 @@
       gdscript
       gdshader
       godot_resource
+      latex
     ];
 
     addDefaultGrammars = true;
@@ -16,14 +17,8 @@
       enable = true;
     };
 
-    incrementalSelection = {
-      enable = true;
-    };
-
     indent = {
-      enable = true;
-
-      disable = ["csharp"];
+      enable = false;
     };
 
     textobjects = {

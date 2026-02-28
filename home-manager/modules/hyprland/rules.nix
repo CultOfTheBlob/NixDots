@@ -1,45 +1,47 @@
 {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
-      "noblur, title:^(gamescope)$"
-      "fullscreen, title:^(gamescope)$"
-      "workspace 6 silent, title:^(gamescope)$"
+      "match:title (steam_app*)$, no_blur on"
+      "match:title ^(steam_app.*)$, border_size 0"
 
-      "move 72% 7%,title:^(Picture-in-Picture)$ "
+      "match:title ^(Picture-in-Picture)$, move 200 400"
+      "match:title ^(Picture-in-Picture)$, float on"
+      "match:title ^(Picture-in-Picture)$, keep_aspect_ratio on"
 
-      "opacity 1.5 override, class:^(org.kde.dolphin)$"
+      "match:class ^(org.kde.dolphin)$, opacity 1.5 1.5 override"
 
-      "idleinhibit fullscreen, class:^(*)$"
-      "idleinhibit fullscreen, title:^(*)$"
-      "idleinhibit fullscreen, fullscreen:1"
+      "match:class ^(.*)$, idle_inhibit fullscreen"
+      "match:title ^(.*)$, idle_inhibit fullscreen"
 
-      "tile, title:^(Godot)$"
+      "match:title ^(Godot)$, tile on"
 
-      "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
-      "float, class:(xdg-desktop-portal-gtk)"
-      "float, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
-      "float, class:^(nm-applet|nm-connection-editor|blueman-manager)$"
-      "float, class:^([Ss]team)$,title:^((?![Ss]team).*|[Ss]team [Ss]ettings)$"
-      "float, title:^(Picture-in-Picture)$"
+      "match:class (blender)$, size 1200 800"
+      "match:class (blender)$, move 100 100"
 
-      "workspace 1, title:^(Godot)$"
-      "workspace 3, class:^(org.kde.dolphin)$"
-      "workspace 4, class:^([Ff]loorp)$"
-      "workspace 7, class:^(com.obsproject.Studio)$"
-      "workspace 8, class:^([Ss]team)$"
-      "workspace 9, class:^([Dd]iscord)$"
-      "workspace 10, class:^([Ss]potify)$"
+      "match:class ^(org.kde.polkit-kde-authentication-agent-1)$, float on"
+      "match:class ^(xdg-desktop-portal-gtk)$, float on"
+      "match:class ^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$, float on"
+      "match:class ^(nm-applet|nm-connection-editor|blueman-manager)$, float on"
+      "match:class ^([Ss]team)$ title:^((?![Ss]team).*|[Ss]team [Ss]ettings)$, float on"
+      "match:title ^(Picture-in-Picture)$, float on"
 
-      "workspace 6 silent, class:^(virt-manager)$"
-      "workspace 9 silent, class:^([Aa]udacious)$"
+      "match:title ^(Godot)$, workspace 1"
+      "match:class ^(org.kde.dolphin)$, workspace 3"
+      "match:class ^([Ff]loorp)$, workspace 4"
+      "match:class ^(com.obsproject.Studio)$, workspace 7"
+      "match:class ^([Ss]team)$, workspace 8"
+      "match:class ^([Dd]iscord)$, workspace 9"
+      "match:class ^([Ee]lement)$, workspace 9"
+      "match:class ^([Ss]potify)$, workspace 10"
 
-      "size 70% 70%, class:^(xdg-desktop-portal-gtk)$"
+      "match:class ^(virt-manager)$, workspace 6 silent"
+      "match:class ^([Aa]udacious)$, workspace 9 silent"
 
-      "keepaspectratio, title:^(Picture-in-Picture)$"
+      "match:class ^(xdg-desktop-portal-gtk)$, size 70% 70%"
     ];
 
     layerrule = [
-      "noanim, selection"
+      "match:namespace selection, no_anim on"
     ];
   };
 }

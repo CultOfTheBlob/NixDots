@@ -7,5 +7,6 @@
     ./gdadd.nix
     ./gameMode.nix
     ./mediaControl.nix
+    ./yazi-commander.nix
   ];
 }

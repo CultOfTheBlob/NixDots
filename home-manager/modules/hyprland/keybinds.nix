@@ -18,7 +18,8 @@
       #APPS
       "$mainMod, Return, exec, $term"
       "$mainMod, B, exec, $browser"
-      "$mainMod, D, exec, dolphin"
+      "$mainMod, D, exec, $files"
+      "$mainMod, Y, exec, yazi-commander"
 
       #LAUNCHER
       "$mainMod, A, exec, pkill rofi || rofi -show drun -show-icons"
@@ -29,20 +30,16 @@
       "$mainMod, N, exec, swaync-client -t -sw"
       "$mainMod, P, exec, pkill wlogout || wlogout --buttons-per-row 6 --primary-monitor DP-1"
 
-      "$mainMod ALT, Return, exec, pypr toggle term"
-      "$mainMod ALT, B, exec, pypr toggle blue"
-      "$mainMod ALT, K, exec, pypr toggle proc"
-
       "$mainMod ALT, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
       "$mainMod, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m window -o /home/${user}/Pictures/Screenshots/"
       "$mainMod ALT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region -o /home/${user}/Pictures/Screenshots/"
 
       #WINDOW MANAGEMENT
-      "$mainMod CTRL, H, resizeactive,-50 0"
-      "$mainMod CTRL, L, resizeactive,50 0"
-      "$mainMod CTRL, K, resizeactive,0 -50"
-      "$mainMod CTRL, J, resizeactive,0 50"
+      "$mainMod CTRL, H, resizeactive, -50 0"
+      "$mainMod CTRL, L, resizeactive, 50 0"
+      "$mainMod CTRL, K, resizeactive, 0 -50"
+      "$mainMod CTRL, J, resizeactive, 0 50"
 
       "$mainMod ALT, H, movewindow, l"
       "$mainMod ALT, L, movewindow, r"
@@ -105,12 +102,14 @@
 
     bindl = [
       #HOTKEYS
-      ", xf86audioraisevolume, exec, pactl -- set-sink-volume 0 +5%"
-      ", xf86audiolowervolume, exec, pactl -- set-sink-volume 0 -5%"
-      ", print, exec, pactl -- set-source-mute 0 toggle"
-      ", xf86audiomute, exec, pactl -- set-sink-mute 0 toggle"
+      ", xf86audioraisevolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", xf86audiolowervolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
+      ", xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
-      "$mainMod, C, exec, mediaControl --pause"
+      ", xf86audioplay, exec, mediaControl --pause"
+
+      ", xf86audionext, exec, mediaControl --nxt"
+      ", xf86audioprev, exec, mediaControl --prv"
 
       ", xf86Sleep, exec, systemctl suspend"
     ];

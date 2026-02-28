@@ -12,17 +12,18 @@
     ./zram.nix
     ./hyprland.nix
     ./update.nix
-    ./greetd.nix
     ./sudo.nix
     ./nixld.nix
     ./hardware.nix
     ./steam.nix
     ./gamemode.nix
     ./virtualization.nix
-    ./kanata.nix
     ./mount.nix
     ./polkit.nix
     ./xdg.nix
     ./display-manager.nix
+    ./openrgb.nix
+    ./udev.nix
+    ./env.nix
   ];
 }

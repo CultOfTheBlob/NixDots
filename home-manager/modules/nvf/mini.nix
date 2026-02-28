@@ -40,6 +40,14 @@
 
     pick = {
       enable = true;
+
+      setupOpts = {
+        window = {
+          config = {
+            width = 120;
+          };
+        };
+      };
     };
 
     extra = {

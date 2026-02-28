@@ -39,6 +39,12 @@
       x = "exit";
     };
 
+    siteFunctions = {
+      clone = ''
+        curl -L https://raw.githubusercontent.com/$1 --output $2
+      '';
+    };
+
     oh-my-zsh = {
       enable = true;
 

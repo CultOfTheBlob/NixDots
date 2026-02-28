@@ -10,14 +10,18 @@
     caligula
     git
     nix-output-monitor
+    cava
 
     # Command line utils
+    linuxHeaders
     libnotify
     wl-clipboard
     rich-cli
     trash-cli
-    mediainfo
     ouch
+    duckdb
+    mediainfo
+    inetutils
 
     # Apps
     godot-mono
@@ -25,24 +29,24 @@
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kompare
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
     prismlauncher
     file-roller
     obs-studio
     krita
     inkscape-with-extensions
     gimp-with-plugins
-    xfce.ristretto
+    ristretto
     obsidian
     gparted
     qalculate-gtk
-    kdePackages.qt6ct
-    kdePackages.qtstyleplugin-kvantum
+    cavalier
 
     # Utils
     networkmanagerapplet
     pulseaudio
-    linuxHeaders
-    xfce.tumbler
+    tumbler
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.kdf

@@ -16,6 +16,11 @@
         }
 
         {
+          lhs = "<leader>l";
+          icon = "󰿈";
+        }
+
+        {
           lhs = "<leader>p";
           group = "+Pick";
           icon = "";

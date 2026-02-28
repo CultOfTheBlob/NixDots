@@ -3,10 +3,12 @@
     git = {
       enable = true;
 
-      userName = "CultOfTheBlob";
-      userEmail = "human.choupani@gmail.com";
+      settings = {
+        user = {
+          name = "CultOfTheBlob";
+          email = "human.choupani@gmail.com";
+        };
 
-      extraConfig = {
         init.defaultBranch = "main";
       };
     };

@@ -3,14 +3,12 @@
     ./hyprland
     ./nvf
     ./stylix.nix
-    ./env.nix
     ./git.nix
     ./kitty.nix
     ./fzf.nix
     ./zsh.nix
     ./swayimg.nix
     ./nh.nix
-    ./swww.nix
     ./bat.nix
     ./waybar
     ./swaync.nix
@@ -33,5 +31,9 @@
     ./networkmanager-dmenu.nix
     ./rofi.nix
     ./yazi.nix
+    ./duckdb.nix
+    ./blender.nix
+    ./element.nix
+    ./rustfmt.nix
   ];
 }
