@@ -44,16 +44,16 @@
         action = ":wincmd l<cr>";
       }
 
-      {
-        key = "<c-]>";
-        mode = "n";
-        action = ":bnext<cr>";
-      }
-      {
-        key = "<c-[>";
-        mode = "n";
-        action = ":bprev<cr>";
-      }
+      # {
+      #   key = "<c-]>";
+      #   mode = "n";
+      #   action = ":bnext<cr>";
+      # }
+      # {
+      #   key = "<c-[>";
+      #   mode = "n";
+      #   action = ":bprev<cr>";
+      # }
 
       {
         key = "<leader>h";

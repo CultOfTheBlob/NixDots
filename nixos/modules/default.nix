@@ -25,5 +25,6 @@
     ./openrgb.nix
     ./udev.nix
     ./env.nix
+    ./rdp.nix
   ];
 }

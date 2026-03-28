@@ -15,8 +15,8 @@
 
       mappings = {
         closeCurrent = "<leader>bc";
-        cycleNext = "<leader>b]";
-        cyclePrevious = "<leader>b[";
+        cycleNext = "<c-]>";
+        cyclePrevious = "<c-[>";
         moveNext = "<leader>bm]";
         movePrevious = "<leader>bm[";
 

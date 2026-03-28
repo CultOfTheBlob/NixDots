@@ -1,8 +1,8 @@
 {
   description = "System Flake";
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/2fc6539b481e1d2569f25f8799236694180c0993";
+
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
@@ -47,36 +47,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     pkgsStable = inputs.nixpkgs-stable.legacyPackages.${system};
-
     system = "x86_64-linux";
     user = "blob";
-
     hosts = ["yog-sothoth"];
     host = builtins.elemAt hosts 0;
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs user host pkgsStable;};
-
       modules = [
         ./nixos/configuration.nix
         ./hosts/${host}/hardware-configuration.nix
-
         inputs.stylix.nixosModules.stylix
       ];
     };
-
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.${user} = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-
       extraSpecialArgs = {inherit inputs user system pkgsStable;};
-
       modules = [
         ./home-manager/home.nix
         inputs.stylix.homeModules.stylix

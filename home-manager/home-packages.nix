@@ -31,10 +31,8 @@
     kdePackages.kompare
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
-    prismlauncher
     file-roller
     obs-studio
-    krita
     inkscape-with-extensions
     gimp-with-plugins
     ristretto
