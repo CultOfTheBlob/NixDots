@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    projman = {
+      url = "github:CultOfTheBlob/ProjMan";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:danth/stylix/";
       inputs.nixpkgs.follows = "nixpkgs";
