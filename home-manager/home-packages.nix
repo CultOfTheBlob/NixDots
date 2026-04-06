@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  system,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
@@ -29,7 +24,6 @@
     inetutils
 
     # Apps
-    inputs.projman.packages.${system}.default
     godot-mono
     blender
     kdePackages.dolphin

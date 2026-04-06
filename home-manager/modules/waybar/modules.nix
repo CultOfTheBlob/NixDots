@@ -199,13 +199,16 @@
           format-window-separator = " ";
           window-rewrite-default = "";
           window-rewrite = {
+            "title<ProjMan>" = "󱑛";
             "title<.*picture-in-picture.*>" = "";
             "class<floorp>" = "";
             "class<Element>" = "󰵅";
             "class<org.prismlauncher.PrismLauncher>" = "󰍳";
             "class<org.godotengine.*>" = "";
             "class<kitty>" = "";
-            "title<nv>" = "󰅩";
+            "class<neovide>" = "";
+            "class<console>" = "";
+            "title<nv>" = "";
             "class<blender>" = "";
             "class<[ss]potify>" = "";
             "class<org.kde.dolphin>" = "󰝰";
@@ -216,6 +219,7 @@
             "class<obsidian>" = "";
             "class<com.obsproject.studio>" = "";
             "class<steam>" = "󰓓";
+            "default" = "";
           };
         };
 

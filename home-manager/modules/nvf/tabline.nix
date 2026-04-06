@@ -9,7 +9,7 @@
           auto_toggle_bufferline = true;
           enforce_regular_tabs = true;
           diagnositcs = "nvim_lsp";
-          sort_by = "insert_at_end";
+          sort_by = "insert_after_current";
         };
       };
 

@@ -30,6 +30,7 @@
     targets = {
       gtk.enable = false;
       nvf.enable = false;
+      neovide.enable = false;
       rofi.enable = false;
       hyprlock.enable = false;
       waybar.enable = false;

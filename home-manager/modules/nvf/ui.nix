@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nvf.settings.vim = {
     ui = {
       noice = {

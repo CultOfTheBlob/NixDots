@@ -1,15 +1,5 @@
 {
   programs.nvf.settings.vim.mini = {
-    animate = {
-      enable = true;
-
-      setupOpts = {
-        cursor = {
-          enable = false;
-        };
-      };
-    };
-
     comment = {
       enable = true;
 

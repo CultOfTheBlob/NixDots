@@ -1,5 +1,6 @@
 {
   imports = [
+    ./projman
     ./hyprland
     ./nvf
     ./stylix.nix
@@ -35,5 +36,6 @@
     ./blender.nix
     ./element.nix
     ./rustfmt.nix
+    ./neovide.nix
   ];
 }

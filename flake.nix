@@ -72,6 +72,7 @@
       extraSpecialArgs = {inherit inputs user system pkgsStable;};
       modules = [
         ./home-manager/home.nix
+        inputs.projman.homeManagerModules.default
         inputs.stylix.homeModules.stylix
         inputs.nvf.homeManagerModules.default
         inputs.nixcord.homeModules.nixcord

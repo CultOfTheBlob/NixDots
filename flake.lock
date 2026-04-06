@@ -955,11 +955,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1774888429,
-        "narHash": "sha256-JbHiPUDtSVUqHwfqR/jRwVkUWc176BftcEM+HWsCpfc=",
+        "lastModified": 1775412110,
+        "narHash": "sha256-YUCkW919vBrq7D6IpPbY8KBMunUoza9gDvcsKTXHHCI=",
         "owner": "CultOfTheBlob",
         "repo": "ProjMan",
-        "rev": "c8789c3a4928725437cfe455fe91ab6c38b57c4d",
+        "rev": "6b9c6c2c7154a1c44c410ad0efb65ec0fb669294",
         "type": "github"
       },
       "original": {

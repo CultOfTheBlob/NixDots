@@ -2,7 +2,6 @@
   pkgs,
   config,
   user,
-  lib,
   ...
 }: let
   formatColor = color:
