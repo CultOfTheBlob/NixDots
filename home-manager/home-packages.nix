@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   home.packages = with pkgs; [
     # Command line apps
@@ -11,6 +13,7 @@
     git
     nix-output-monitor
     cava
+    speedtest-rs
 
     # Command line utils
     linuxHeaders
@@ -40,6 +43,7 @@
     gparted
     qalculate-gtk
     cavalier
+    keymapp
 
     # Utils
     networkmanagerapplet

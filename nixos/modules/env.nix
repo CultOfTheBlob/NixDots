@@ -1,7 +1,7 @@
 {
   environment.sessionVariables = {
     TERMINAL = "kitty";
-    EDITOR = "nvim";
+    EDITOR = "neovide";
     BROWSER = "floorp";
 
     NIXOS_OZONE_WL = "1";

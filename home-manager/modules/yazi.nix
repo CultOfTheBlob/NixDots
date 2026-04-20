@@ -7,7 +7,7 @@
   programs.yazi = {
     enable = true;
 
-    enableZshIntegration = true;
+    enableNushellIntegration = true;
 
     shellWrapperName = "yy";
 
@@ -57,6 +57,12 @@
       };
 
       opener = {
+        edit = [
+          {
+            run = "neovide $@";
+            for = "unix";
+          }
+        ];
         extract = [
           {
             run = "ouch d -y $@";

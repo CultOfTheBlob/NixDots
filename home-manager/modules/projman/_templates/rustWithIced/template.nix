@@ -35,17 +35,13 @@
       tracked = false;
     }
     {
+      path = "nix/shell.nix";
+      content = builtins.readFile ./files/shell.nix;
+      tracked = false;
+    }
+    {
       path = "Cargo.toml";
-      content = ''
-        [package]
-        name = "#{name}"
-        version = "0.1.0"
-        edition = "2024"
-
-        [dependencies]
-        thiserror = "2.0.18"
-        iced = "0.14.0"
-      '';
+      content = builtins.readFile ./files/cargo.toml;
       tracked = false;
     }
     {
@@ -70,8 +66,8 @@
         rust
         */
         ''
-          #[derive(thiserror::Error), Debug]
-          pub enum Error;
+          #[derive(thiserror::Error, Debug)]
+          pub enum Error {}
         '';
       tracked = false;
     }
@@ -100,11 +96,18 @@
       tracked = false;
     }
     {
-      path = ".fdignore";
+      path = ".rgignore";
       content = ''
         *
         !src/
         !src/**
+      '';
+      tracked = true;
+    }
+    {
+      path = ".envrc";
+      content = ''
+        use flake
       '';
       tracked = true;
     }
@@ -118,7 +121,37 @@
         **/mutants.out*/
         /target
         /result
+        .direnv
       '';
+      tracked = true;
+    }
+    {
+      path = ".justfile";
+      content =
+        /*
+        just
+        */
+        ''
+          default: run
+
+          run:
+            @cargo run
+
+          fmt:
+            @cargo fmt
+
+          lint: fmt
+            @cargo clippy -- -D warnings
+
+          test: lint
+            @cargo test
+
+          build: test
+            @nix build
+
+          push: build
+            @git push
+        '';
       tracked = true;
     }
   ];
@@ -131,22 +164,24 @@
       ];
     }
     {
-      program = "cp";
-      args = [
-        "/home/blob/Projects/ProjMan/flake.lock"
-        "flake.lock"
-      ];
-    }
-    {
       program = "nix";
       args = [
         "develop"
       ];
     }
     {
-      program = "cargo";
+      program = "nix";
       args = [
+        "develop"
+        "--command"
+        "cargo"
         "fmt"
+      ];
+    }
+    {
+      program = "direnv";
+      args = [
+        "allow"
       ];
     }
   ];
@@ -157,23 +192,19 @@
         "--detach"
         "--class"
         "console"
-        "--"
-        "nix"
-        "develop"
       ];
     }
     {
-      program = "kitty";
+      program = "direnv";
       args = [
-        "--detach"
-        "--"
-        "nix"
-        "develop"
-        "--command"
-        "nv"
+        "exec"
+        "."
+        "neovide"
+        "--wayland_app_id"
+        "editor"
       ];
     }
   ];
-  included_paths = ["src" "tests"];
+  included_paths = ["src" "tests" "nix"];
   excluded_paths = ["target"];
 }

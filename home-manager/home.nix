@@ -1,11 +1,4 @@
 {user, ...}: {
-  imports = [
-    ./home-packages.nix
-    ./modules
-    ./scripts
-    ./colors
-  ];
-
   home = {
     username = user;
     homeDirectory = "/home/${user}";

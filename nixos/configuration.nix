@@ -3,11 +3,6 @@
   host,
   ...
 }: {
-  imports = [
-    ./modules
-    ../home-manager/colors
-  ];
-
   environment.systemPackages = with pkgs; [
     home-manager
 

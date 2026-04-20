@@ -207,8 +207,8 @@
             "class<org.godotengine.*>" = "";
             "class<kitty>" = "";
             "class<neovide>" = "";
+            "class<editor>" = "";
             "class<console>" = "";
-            "title<nv>" = "";
             "class<blender>" = "";
             "class<[ss]potify>" = "";
             "class<org.kde.dolphin>" = "󰝰";
@@ -219,6 +219,7 @@
             "class<obsidian>" = "";
             "class<com.obsproject.studio>" = "";
             "class<steam>" = "󰓓";
+            "class<localsend_app>" = "";
             "default" = "";
           };
         };

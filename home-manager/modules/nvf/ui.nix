@@ -35,6 +35,12 @@
 
       nvim-ufo = {
         enable = true;
+
+        setupOpts = {
+          close_fold_kinds_for_ft = {
+            default = ["comment"];
+          };
+        };
       };
 
       fastaction = {
@@ -113,6 +119,26 @@
 
               redo_mapping = "<c-r>";
             };
+          };
+        };
+
+        event = ["BufReadPost" "BufNewFile" "BufWritePre"];
+      };
+    };
+
+    lazy.plugins = {
+      "outline.nvim" = {
+        package = pkgs.vimPlugins.outline-nvim;
+
+        setupModule = "outline";
+
+        setupOpts = {
+          symbol_folding = {
+            autofold_depth = false;
+          };
+
+          preview_window = {
+            auto_preview = true;
           };
         };
 

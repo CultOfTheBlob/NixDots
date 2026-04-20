@@ -3,6 +3,15 @@
     toggleterm = {
       enable = true;
 
+      setupOpts = {
+        direction = "float";
+        shell = "direnv exec . nu";
+      };
+
+      mappings = {
+        open = "<C-t>";
+      };
+
       lazygit = {
         enable = true;
 
@@ -11,10 +20,6 @@
         mappings = {
           open = "<leader>G";
         };
-      };
-
-      mappings = {
-        open = "<C-t>";
       };
     };
   };

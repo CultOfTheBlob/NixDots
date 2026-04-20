@@ -2,17 +2,6 @@
   programs.nvf.settings.vim = {
     keymaps = [
       {
-        key = "gb";
-        mode = "n";
-        action = "o/**/<Esc>hi<Enter><Enter><Esc>ka<Space>";
-      }
-      {
-        key = "gB";
-        mode = "n";
-        action = "O/**/<Esc>hi<Enter><Enter><Esc>ka<Space>";
-      }
-
-      {
         key = "<leader>sv";
         mode = "n";
         action = ":vsplit<cr>";
@@ -44,16 +33,11 @@
         action = ":wincmd l<cr>";
       }
 
-      # {
-      #   key = "<c-]>";
-      #   mode = "n";
-      #   action = ":bnext<cr>";
-      # }
-      # {
-      #   key = "<c-[>";
-      #   mode = "n";
-      #   action = ":bprev<cr>";
-      # }
+      {
+        key = "co";
+        mode = "n";
+        action = ":Outline<cr>";
+      }
 
       {
         key = "<leader>h";

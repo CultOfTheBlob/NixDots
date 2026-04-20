@@ -82,5 +82,15 @@
         package = pkgs.rust-analyzer;
       };
     };
+
+    lua = {
+      enable = true;
+
+      lsp = {
+        enable = true;
+
+        servers = ["lua-language-server"];
+      };
+    };
   };
 }

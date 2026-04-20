@@ -4,6 +4,10 @@
 
     formatOnSave = true;
 
+    inlayHints = {
+      enable = true;
+    };
+
     lspkind = {
       enable = true;
     };

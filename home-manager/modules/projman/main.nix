@@ -14,11 +14,14 @@
     };
 
     templates = {
-      rustWithIced = import ./rustWithIced/template.nix;
+      rustWithIced = import ./_templates/rustWithIced/template.nix;
+
+      neovimPlugin = import ./_templates/neovimPlugin/template.nix;
     };
 
     icons = {
-      rustWithIced = ./rustWithIced/icon.svg;
+      rustWithIced = ./_templates/rustWithIced/icon.svg;
+      neovimPlugin = ./_templates/neovimPlugin/icon.svg;
     };
 
     projects = [

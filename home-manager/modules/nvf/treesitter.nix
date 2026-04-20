@@ -7,6 +7,11 @@
       gdshader
       godot_resource
       latex
+      nu
+      toml
+      yaml
+      json
+      just
     ];
 
     addDefaultGrammars = true;
@@ -18,7 +23,7 @@
     };
 
     indent = {
-      enable = false;
+      enable = true;
     };
 
     textobjects = {

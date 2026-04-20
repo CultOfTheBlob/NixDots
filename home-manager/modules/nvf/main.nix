@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   programs.nvf = {
     enable = true;
 
@@ -22,6 +22,8 @@
         expandtab = true;
         mouse = "";
         clipboard = "unnamedplus";
+        foldlevel = 99;
+        foldlevelstart = 99;
       };
 
       autocmds = [
@@ -45,6 +47,13 @@
           pattern = ["gdshader"];
         }
       ];
+
+      highlight = {
+        LspInlayHint = {
+          fg = "#${config.colors.base09}";
+          italic = true;
+        };
+      };
     };
   };
 }

@@ -25,7 +25,7 @@
       "match:class ^([Ss]team)$ title:^((?![Ss]team).*|[Ss]team [Ss]ettings)$, float on"
       "match:title ^(Picture-in-Picture)$, float on"
 
-      "match:class ^(neovide)$, workspace 2"
+      "match:class ^(editor)$, workspace 2"
       "match:class ^(console)$, workspace 1"
       "match:title ^(Godot)$, workspace 1"
       "match:class ^(org.kde.dolphin)$, workspace 3"

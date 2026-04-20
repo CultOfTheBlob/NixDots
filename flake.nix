@@ -5,13 +5,10 @@
 
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    import-tree.url = "github:vic/import-tree";
+
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    projman = {
-      url = "github:CultOfTheBlob/ProjMan";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,6 +22,16 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    projman = {
+      url = "github:CultOfTheBlob/ProjMan";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvf = {
@@ -62,16 +69,19 @@
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs user host pkgsStable;};
       modules = [
-        ./nixos/configuration.nix
+        (inputs.import-tree ./nixos)
+        (inputs.import-tree ./home-manager/colors)
         ./hosts/${host}/hardware-configuration.nix
         inputs.stylix.nixosModules.stylix
+        inputs.nix-index-database.nixosModules.default
+        {programs.nix-index-database.comma.enable = true;}
       ];
     };
     homeConfigurations.${user} = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {inherit inputs user system pkgsStable;};
       modules = [
-        ./home-manager/home.nix
+        (inputs.import-tree ./home-manager)
         inputs.projman.homeManagerModules.default
         inputs.stylix.homeModules.stylix
         inputs.nvf.homeManagerModules.default

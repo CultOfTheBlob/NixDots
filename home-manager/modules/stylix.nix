@@ -35,6 +35,7 @@
       hyprlock.enable = false;
       waybar.enable = false;
       yazi.enable = false;
+      bat.enable = false;
 
       floorp = {profileNames = [user];};
     };

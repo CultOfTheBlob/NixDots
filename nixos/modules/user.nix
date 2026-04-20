@@ -1,12 +1,10 @@
 {pkgs, ...}: {
-  programs.zsh.enable = true;
-
   users = {
     groups = {
       plugdev = {};
     };
 
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.nushell;
     users.blob = {
       isNormalUser = true;
       description = "Cult Of The Blob";
