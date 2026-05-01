@@ -49,7 +49,7 @@ in {
       */
       ''
         * {
-          font-family: JetBrainsMono Nerd Font Mono;
+          font-family: FiraCode Nerd Font Mono;
           font-size: 24px;
           transition-duration: 0.7s;
         }

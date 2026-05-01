@@ -16,6 +16,11 @@
         }
 
         {
+          lhs = "<leader>S";
+          icon = "";
+        }
+
+        {
           lhs = "<leader>l";
           icon = "󰿈";
         }

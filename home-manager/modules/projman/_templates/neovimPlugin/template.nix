@@ -51,19 +51,6 @@
       tracked = false;
     }
     {
-      path = ".luarc.json";
-      content =
-        /*
-        json
-        */
-        ''
-          {
-            "diagnostics.globals": ["vim"]
-          }
-        '';
-      tracked = true;
-    }
-    {
       path = ".luacheckrc";
       content =
         /*

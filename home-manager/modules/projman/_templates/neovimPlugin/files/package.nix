@@ -3,7 +3,7 @@
   pkgs,
 }:
 pkgs.vimUtils.buildVimPlugin {
-  pname = "my-neovim-plugin";
+  pname = "#{name}.nvim";
   version = self.shortRev or "dev";
-  src = ./.;
+  src = self;
 }

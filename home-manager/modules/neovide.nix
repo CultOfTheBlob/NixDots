@@ -4,7 +4,7 @@
 
     settings = {
       font = {
-        normal = ["JetBrainsMono Nerd Font Mono"];
+        normal = ["FiraCode Nerd Font"];
         size = 12;
       };
 

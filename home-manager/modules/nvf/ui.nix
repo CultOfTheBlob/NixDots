@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
   programs.nvf.settings.vim = {
     ui = {
       noice = {
         enable = true;
-
         setupOpts = {
           lsp = {
             override = {
@@ -20,7 +24,7 @@
             command_palette = true;
             long_message_to_split = true;
             inc_rename = false;
-            lsp_doc_border = false;
+            lsp_doc_border = true;
           };
         };
       };
@@ -124,9 +128,7 @@
 
         event = ["BufReadPost" "BufNewFile" "BufWritePre"];
       };
-    };
 
-    lazy.plugins = {
       "outline.nvim" = {
         package = pkgs.vimPlugins.outline-nvim;
 
@@ -140,9 +142,47 @@
           preview_window = {
             auto_preview = true;
           };
+
+          outline_window = {
+            position = "bottom";
+          };
         };
 
-        event = ["BufReadPost" "BufNewFile" "BufWritePre"];
+        keys = [
+          {
+            key = "co";
+            mode = "n";
+            action = ":Outline<cr>";
+          }
+        ];
+      };
+
+      "godot-scenetree" = {
+        package = inputs.godot-scenetree.packages.${system}.default;
+
+        setupModule = "godot-scenetree";
+
+        setupOpts = {
+          picker = "mini.pick";
+          split = "right";
+          width = 50;
+
+          mappings = {
+            open_picker = "p";
+            export_node = "<C-x>";
+            get_node_path = "<C-c>";
+            get_onready_node = "<C-o>";
+            attach_signal = "<C-s>";
+          };
+        };
+
+        keys = [
+          {
+            key = "<leader>S";
+            mode = "n";
+            action = ":Scenetree<cr>";
+          }
+        ];
       };
     };
   };

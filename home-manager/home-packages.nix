@@ -1,4 +1,21 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}: let
+  drift = pkgs.buildGoModule {
+    pname = "drift";
+    version = "0.1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "phlx0";
+      repo = "drift";
+      rev = "main";
+      sha256 = "sha256-hkbgxwUgKB/mWQRnn/BJVHV+JyY+rPRTtTl9VpHm4V0=";
+    };
+    vendorHash = "sha256-FsNa9qp2MnPk1onv/O13mFi+82yP7D4LdILZsNzHs+4=";
+  };
+in {
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -14,6 +31,7 @@
     nix-output-monitor
     cava
     speedtest-rs
+    drift
 
     # Command line utils
     linuxHeaders
@@ -46,6 +64,7 @@
     keymapp
 
     # Utils
+    inputs.quickshell.packages.${system}.default
     networkmanagerapplet
     pulseaudio
     tumbler

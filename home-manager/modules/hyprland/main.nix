@@ -33,6 +33,7 @@
         focus_on_activate = "false";
         initial_workspace_tracking = "0";
         middle_click_paste = "false";
+        animate_mouse_windowdragging = "true";
       };
 
       binds = {
@@ -50,6 +51,7 @@
         enable_hyprcursor = "true";
         warp_on_change_workspace = "true";
         no_warps = "true";
+        inactive_timeout = "30";
       };
 
       ecosystem = {

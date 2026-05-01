@@ -34,12 +34,6 @@
       }
 
       {
-        key = "co";
-        mode = "n";
-        action = ":Outline<cr>";
-      }
-
-      {
         key = "<leader>h";
         mode = "n";
         action = ":nohlsearch<CR>";

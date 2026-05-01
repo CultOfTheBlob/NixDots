@@ -9,9 +9,5 @@
 
     # Moonlander — Keymapp / Wally flashing (STM32 DFU)
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
-
   '';
 }
-# Xbox
-# SUBSYSTEM=="input", ATTRS{name}=="*Xbox*|*X-Box*", MODE="0666", ENV{ID_INPUT_JOYSTICK_="1"}
-

@@ -24,6 +24,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +42,11 @@
 
     nvf = {
       url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    godot-scenetree = {
+      url = "github:CultOfTheBlob/godot-scenetree.nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,6 +67,17 @@
 
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    drift = {
+      url = "github:phlx0/drift";
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
+    };
+
+    qml-language-server = {
+      url = "github:cushycush/qml-language-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

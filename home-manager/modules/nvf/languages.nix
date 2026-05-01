@@ -25,7 +25,7 @@
       lsp = {
         enable = true;
 
-        servers = ["roslyn_ls"];
+        servers = ["roslyn-ls"];
       };
     };
 
@@ -88,6 +88,8 @@
 
       lsp = {
         enable = true;
+
+        lazydev.enable = true;
 
         servers = ["lua-language-server"];
       };

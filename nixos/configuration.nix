@@ -5,8 +5,10 @@
 }: {
   environment.systemPackages = with pkgs; [
     home-manager
+  ];
 
-    nerd-fonts.jetbrains-mono
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
   ];
 
   networking.hostName = host;

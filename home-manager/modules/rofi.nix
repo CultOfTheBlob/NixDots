@@ -4,7 +4,7 @@ in {
   programs.rofi = {
     enable = true;
 
-    font = "JetBrainsMono Nerd Font";
+    font = "FiraCode Nerd Font";
     location = "center";
     terminal = "kitty";
 

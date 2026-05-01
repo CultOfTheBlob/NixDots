@@ -12,6 +12,7 @@
       yaml
       json
       just
+      qmljs
     ];
 
     addDefaultGrammars = true;

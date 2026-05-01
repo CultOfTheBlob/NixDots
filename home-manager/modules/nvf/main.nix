@@ -1,8 +1,18 @@
-{config, ...}: {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (inputs.nvf.lib.nvim.dag) entryAnywhere;
+  qml-ls = inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in {
   programs.nvf = {
     enable = true;
 
     settings.vim = {
+      extraPackages = [qml-ls];
+
       theme = {
         enable = true;
         name = "nord";
@@ -53,6 +63,48 @@
           fg = "#${config.colors.base09}";
           italic = true;
         };
+      };
+
+      luaConfigRC = {
+        lazydev =
+          /*
+          lua
+          */
+          ''
+            local lsp = require("lazydev.lsp")
+            local orig = lsp.supports
+            lsp.supports = function(client)
+              if client and client.name == "lua-language-server" then return true end
+              return orig(client)
+            end
+          '';
+        qml-lsp =
+          entryAnywhere
+          /*
+          lua
+          */
+          ''
+            vim.lsp.config("qml_ls", {
+              cmd = { "qml-language-server" },
+              filetypes = { "qml" },
+              root_markers = { ".git", "qmldir" },
+            })
+            vim.lsp.enable("qml_ls")
+          '';
+        qml-indent =
+          entryAnywhere
+          /*
+          lua
+          */
+          ''
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "qml",
+              callback = function()
+                vim.bo.indentexpr = ""
+                vim.bo.smartindent = true
+              end
+            })
+          '';
       };
     };
   };

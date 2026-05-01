@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   user,
   ...
@@ -10,6 +9,7 @@
     settings = {
       general = {
         ignore_empty_input = true;
+        hide_cursor = true;
       };
 
       background = [
@@ -55,7 +55,7 @@
           text = "cmd[update:18000000] echo '<b> '$(date +'%A, %-d %B %Y')' </b>'";
           color = "rgb(${config.colors.base0D})";
           font_size = 34;
-          font_family = "JetBrains Mono Nerd Font 10";
+          font_family = "FiraCode Mono Nerd Font 10";
           position = "0, -100";
           halign = "center";
           valign = "center";
@@ -67,7 +67,7 @@
           text = "cmd[update:1000] echo ''$(date +'%I')''";
           color = "rgb(${config.colors.base0D})";
           font_size = 150;
-          font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
+          font_family = "FiraCode Mono Nerd Font Mono ExtraBold";
           position = "-160, -250";
           halign = "center";
           valign = "center";
@@ -79,7 +79,7 @@
           text = "cmd[update:1000] echo ''$(date +'%M')''";
           color = "rgb(${config.colors.base0D})";
           font_size = 150;
-          font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
+          font_family = "FiraCode Mono Nerd Font Mono ExtraBold";
           position = "160, -250";
           halign = "center";
           valign = "center";
@@ -91,7 +91,7 @@
           text = "cmd[update:1000] echo ''$(date +'%S %p')''";
           color = "rgb(${config.colors.base0D})";
           font_size = 20;
-          font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
+          font_family = "FiraCode Mono Nerd Font Mono ExtraBold";
           position = "0, -330";
           halign = "center";
           valign = "center";
@@ -104,7 +104,7 @@
           text = "This is exhilirating! Get excited!";
           color = "rgb(${config.colors.base0D})";
           font_size = 20;
-          font_family = "JetBrains Mono Nerd Font Mono";
+          font_family = "FiraCode Mono Nerd Font Mono";
           position = "0, -45";
           halign = "center";
           valign = "top";

@@ -1,5 +1,5 @@
 {
-  description = "Rust development environment.";
+  description = "Neovim plugin development environment.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
