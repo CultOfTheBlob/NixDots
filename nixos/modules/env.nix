@@ -2,7 +2,7 @@
   environment.sessionVariables = {
     TERMINAL = "kitty";
     EDITOR = "neovide";
-    BROWSER = "floorp";
+    BROWSER = "zen-beta";
 
     NIXOS_OZONE_WL = "1";
 

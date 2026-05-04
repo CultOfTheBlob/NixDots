@@ -153,7 +153,7 @@
   };
 
   services.displayManager = {
-    defaultSession = "hyprland-uwsm";
+    defaultSession = "niri";
 
     sddm = {
       enable = true;

@@ -36,8 +36,10 @@
       waybar.enable = false;
       yazi.enable = false;
       bat.enable = false;
+      noctalia-shell.enable = false;
 
       floorp = {profileNames = [user];};
+      zen-browser = {profileNames = [user];};
     };
   };
 }

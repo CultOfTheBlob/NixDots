@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   home.shell.enableNushellIntegration = true;
 
   programs.nushell = {
@@ -44,7 +44,7 @@
 
           let total = $end - $start | format duration sec
           let body = $"Finished in ($total)"
-          notify -s "System Rebuilt!" -t $body
+          notify-send -u low "System Rebuilt!" $body
           return $result
         }
 
@@ -57,7 +57,7 @@
 
           let total = $end - $start | format duration sec
           let body = $"Finished in ($total)"
-          notify -s "Nixos Rebuilt!" -t $body
+          notify-send -u low "Nixos Rebuilt!" $body
           return $result
         }
 
@@ -70,7 +70,7 @@
 
           let total = $end - $start | format duration sec
           let body = $"Finished in ($total)"
-          notify -s "Home Manager Rebuilt!" -t $body
+          notify-send -u low "Home Manager Rebuilt!" $body
           return $result
         }
 
@@ -83,13 +83,9 @@
 
           let total = $end - $start | format duration sec
           let body = $"Finished in ($total)"
-          notify -s "Flake Updated!" -t $body
+          notify-send -u low "Flake Updated!" $body
           return $result
         }
       '';
-
-    plugins = with pkgs.nushellPlugins; [
-      desktop_notifications
-    ];
   };
 }
