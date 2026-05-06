@@ -1,7 +1,7 @@
 {
   description = "System Flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/2fc6539b481e1d2569f25f8799236694180c0993";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -75,7 +75,6 @@
 
     drift = {
       url = "github:phlx0/drift";
-      inputs.nixpkgs.follows = "nixpkgs";
       flake = false;
     };
 

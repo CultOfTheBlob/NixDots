@@ -1,4 +1,4 @@
-{
+{user, ...}: {
   environment.sessionVariables = {
     TERMINAL = "kitty";
     EDITOR = "neovide";
@@ -8,5 +8,7 @@
 
     QT_QPA_PLATFORM = "wayland";
     GODOT_WAYLAND_DISABLE_LIBDECOR = "1";
+
+    NIRI_CONFIG = "/home/${user}/.config/niri/main.kdl";
   };
 }

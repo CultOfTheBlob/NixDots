@@ -13,6 +13,7 @@
       json
       just
       qmljs
+      kdl
     ];
 
     addDefaultGrammars = true;

@@ -34,7 +34,7 @@ in {
     "Mod+Alt+K".action.move-column-to-workspace-up = {};
     "Mod+Alt+J".action.move-column-to-workspace-down = {};
 
-    "Mod+Tab".action.toggle-overview = {};
+    "Mod+O".action.toggle-overview = {};
 
     "Mod+Shift+H".action.consume-or-expel-window-left = {};
     "Mod+Shift+L".action.consume-or-expel-window-right = {};

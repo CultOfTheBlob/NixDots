@@ -4,6 +4,7 @@
     position = "top";
     monitors = [
       "DP-1"
+      "DP-2"
     ];
     density = "comfortable";
     showOutline = false;
@@ -191,13 +192,35 @@
         name = "DP-1";
       }
       {
-        density = "mini";
+        density = "default";
         displayMode = "always_visible";
-        enabled = false;
+        enabled = true;
         name = "DP-2";
-        position = "bottom";
+        position = "top";
         widgets = {
-          center = [];
+          center = [
+            {
+              characterCount = 2;
+              colorizeIcons = false;
+              emptyColor = "secondary";
+              enableScrollWheel = true;
+              focusedColor = "primary";
+              followFocusedScreen = false;
+              fontWeight = "bold";
+              groupedBorderOpacity = 1;
+              hideUnoccupied = false;
+              iconScale = 0.8;
+              id = "Workspace";
+              labelMode = "index";
+              occupiedColor = "secondary";
+              pillSize = 0.6;
+              showApplications = true;
+              showApplicationsHover = false;
+              showBadge = true;
+              showLabelsOnlyWhenOccupied = true;
+              unfocusedIconsOpacity = 1;
+            }
+          ];
           left = [];
           right = [];
         };

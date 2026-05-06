@@ -14,17 +14,11 @@
     }
     {
       matches = [];
-      opacity = 0.95;
-
-      # background-effect = {
-      #   blur = true;
-      #   noise = 0.05;
-      #   saturation = 1.0;
-      # };
+      opacity = 0.9;
     }
     {
       matches = [{is-focused = false;}];
-      opacity = 0.9;
+      opacity = 0.85;
     }
 
     {
