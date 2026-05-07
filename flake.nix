@@ -12,6 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix.url = "github:Mic92/sops-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -112,6 +114,7 @@
       extraSpecialArgs = {inherit inputs user system pkgsStable;};
       modules = [
         (inputs.import-tree ./home-manager)
+        inputs.sops-nix.homeManagerModules.sops
         inputs.projman.homeManagerModules.default
         inputs.niri.homeModules.niri
         inputs.noctalia.homeModules.default

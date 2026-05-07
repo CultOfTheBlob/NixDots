@@ -14,9 +14,5 @@
         init.defaultBranch = "main";
       };
     };
-
-    git-credential-oauth = {
-      enable = true;
-    };
   };
 }

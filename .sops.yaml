@@ -1,0 +1,8 @@
+keys:
+  - &me 54EB BF62 D561 8922 44C8  F29E A8F3 F868 F21F D5F8
+
+creation_rules:
+  - path_regex: secrets/.*
+    key_groups:
+      - pgp:
+        - *me

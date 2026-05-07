@@ -60,7 +60,7 @@ in {
 
       highlight = {
         LspInlayHint = {
-          fg = "#${config.colors.base09}";
+          fg = "#${config.colors.base03}";
           italic = true;
         };
       };
@@ -105,6 +105,16 @@ in {
               end
             })
           '';
+
+        treesitter-indent = entryAnywhere ''
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "nix" },
+            callback = function()
+              local ts_indent = require("nvim-treesitter.indent")
+              vim.bo.indentexpr = "v:lua.require'nvim-treesitter.indent'.get_indent(v:lnum)"
+            end,
+          })
+        '';
       };
     };
   };

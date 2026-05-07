@@ -20,16 +20,8 @@
     autotagHtml = true;
     fold = true;
 
-    highlight = {
-      enable = true;
-    };
-
-    indent = {
-      enable = true;
-    };
-
-    textobjects = {
-      enable = true;
-    };
+    highlight.enable = true;
+    indent.enable = false;
+    textobjects.enable = true;
   };
 }
