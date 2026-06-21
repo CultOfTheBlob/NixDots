@@ -43,6 +43,7 @@ in {
     duckdb
     mediainfo
     inetutils
+    neovim-remote
 
     # Apps
     godot-mono
@@ -52,6 +53,7 @@ in {
     kdePackages.kompare
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
+    kdePackages.okular
     file-roller
     obs-studio
     inkscape-with-extensions

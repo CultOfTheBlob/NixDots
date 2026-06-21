@@ -5,11 +5,7 @@
     autoHideMs = 2000;
     overlayLayer = true;
     backgroundOpacity = 1;
-    enabledTypes = [
-      0
-      1
-      2
-    ];
-    monitors = [];
+    enabledTypes = [0 1 2];
+    monitors = ["DP-1"];
   };
 }

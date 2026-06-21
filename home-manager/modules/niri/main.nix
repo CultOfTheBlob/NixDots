@@ -19,6 +19,8 @@
         workspace-auto-back-and-forth = true;
 
         keyboard = {
+          xkb.layout = "us";
+
           repeat-delay = 300;
           repeat-rate = 50;
         };
@@ -33,6 +35,10 @@
         enable = true;
 
         path = lib.getExe pkgs.xwayland-satellite;
+      };
+
+      gestures = {
+        hot-corners.enable = false;
       };
     };
   };

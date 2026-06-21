@@ -77,9 +77,9 @@
           hideMode = "hidden";
           id = "MediaMini";
           maxWidth = 145;
-          panelShowAlbumArt = false;
+          panelShowAlbumArt = true;
           scrollingMode = "hover";
-          showAlbumArt = false;
+          showAlbumArt = true;
           showArtistFirst = false;
           showProgressRing = true;
           showVisualizer = true;
@@ -104,7 +104,7 @@
           labelMode = "index";
           occupiedColor = "tertiary";
           pillSize = 0.6;
-          showApplications = true;
+          showApplications = false;
           showApplicationsHover = false;
           showBadge = true;
           showLabelsOnlyWhenOccupied = false;
@@ -180,11 +180,11 @@
     mouseWheelAction = "none";
     reverseScroll = false;
     mouseWheelWrap = true;
-    middleClickAction = "none";
-    middleClickFollowMouse = false;
+    middleClickAction = "settings";
+    middleClickFollowMouse = true;
     middleClickCommand = "";
     rightClickAction = "none";
-    rightClickFollowMouse = true;
+    rightClickFollowMouse = false;
     rightClickCommand = "";
     screenOverrides = [
       {
@@ -214,7 +214,7 @@
               labelMode = "index";
               occupiedColor = "secondary";
               pillSize = 0.6;
-              showApplications = true;
+              showApplications = false;
               showApplicationsHover = false;
               showBadge = true;
               showLabelsOnlyWhenOccupied = true;

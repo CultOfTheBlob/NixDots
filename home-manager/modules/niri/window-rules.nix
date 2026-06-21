@@ -14,11 +14,11 @@
     }
     {
       matches = [];
-      opacity = 0.9;
+      opacity = 0.95;
     }
     {
       matches = [{is-focused = false;}];
-      opacity = 0.85;
+      opacity = 0.9;
     }
 
     {
@@ -45,27 +45,23 @@
     }
 
     {
-      matches = [{app-id = "[Ff]loorp";}];
+      matches = [{app-id = "zen-beta";}];
       open-on-output = "DP-1";
     }
     {
-      matches = [{app-id = "org.kde.dolphin";}];
+      matches = [{app-id = "steam";}];
       open-on-output = "DP-1";
-    }
-    {
-      matches = [{app-id = "[Ss]team";}];
-      open-on-output = "DP-2";
     }
     {
       matches = [{app-id = "vesktop";}];
       open-on-output = "DP-2";
     }
     {
-      matches = [{app-id = "[Ee]lement";}];
+      matches = [{app-id = "element";}];
       open-on-output = "DP-2";
     }
     {
-      matches = [{app-id = "[Ss]potify";}];
+      matches = [{app-id = "spotify";}];
       open-on-output = "DP-2";
     }
     {
@@ -82,9 +78,12 @@
     }
 
     {
-      matches = [{app-id = "[Ss]team";}];
-      excludes = [{title = "[Ss]team";}];
-      open-floating = true;
+      matches = [{app-id = "console";}];
+      open-on-output = "DP-1";
+    }
+    {
+      matches = [{app-id = "editor";}];
+      open-on-output = "DP-2";
     }
   ];
 }

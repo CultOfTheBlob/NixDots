@@ -16,35 +16,42 @@
               trigger = "/doc";
               body = ''
                 /**
+                * <summary>
                 * $1
+                * </summary>
                 */
               '';
             }
 
             {
-              trigger = "export";
+              trigger = "Match";
               body = ''
-                [Export]
-                private $\{1:int\} $2;
+                    Match
+                \(
+                    some: value =>
+                    {
+                        $1
+                    },
+                    none: () =>
+                    {
+                        $2
+                    }
+                \);
               '';
             }
+
             {
-              trigger = "public";
+              trigger = "Match";
               body = ''
-                public $1 $2
-                {
-                    get => $3;
-                    set => $3 = value;
-                }
-              '';
-            }
-            {
-              trigger = "public_readonly";
-              body = ''
-                public $1 $2
-                {
-                    get => $3;
-                }
+                    Match
+                (
+                    ok: value =>
+                    {
+                    },
+                    err: value =>
+                    {
+                    }
+                );
               '';
             }
           ];

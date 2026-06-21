@@ -4,7 +4,7 @@
     settings = {
       settingsVersion = 59;
       general = {
-        avatarImage = "";
+        avatarImage = toString ../assets/face.jpg;
         dimmerOpacity = 0.2;
         showScreenCorners = true;
         forceBlackScreenCorners = true;
@@ -16,11 +16,11 @@
         animationSpeed = 1;
         animationDisabled = false;
         compactLockScreen = false;
-        lockScreenAnimations = false;
+        lockScreenAnimations = true;
         lockOnSuspend = true;
         showSessionButtonsOnLockScreen = true;
-        showHibernateOnLockScreen = false;
-        enableLockScreenMediaControls = false;
+        showHibernateOnLockScreen = true;
+        enableLockScreenMediaControls = true;
         enableShadows = true;
         enableBlurBehind = true;
         shadowDirection = "bottom_right";
@@ -34,35 +34,20 @@
         lockScreenCountdownDuration = 10000;
         autoStartAuth = false;
         allowPasswordWithFprintd = false;
-        clockStyle = "custom";
+        clockStyle = "analog";
         clockFormat = "hh\nmm";
-        passwordChars = false;
-        lockScreenMonitors = [];
-        lockScreenBlur = 0;
-        lockScreenTint = 0;
+        passwordChars = true;
+        lockScreenMonitors = ["DP-1"];
+        lockScreenBlur = 0.5;
+        lockScreenTint = 0.1;
         keybinds = {
-          keyUp = [
-            "Up"
-          ];
-          keyDown = [
-            "Down"
-          ];
-          keyLeft = [
-            "Left"
-          ];
-          keyRight = [
-            "Right"
-          ];
-          keyEnter = [
-            "Return"
-            "Enter"
-          ];
-          keyEscape = [
-            "Esc"
-          ];
-          keyRemove = [
-            "Backspace"
-          ];
+          keyUp = ["Up"];
+          keyDown = ["Down"];
+          keyLeft = ["Left"];
+          keyRight = ["Right"];
+          keyEnter = ["Return" "Enter"];
+          keyEscape = ["Esc"];
+          keyRemove = ["Backspace"];
         };
         reverseScroll = false;
         smoothScrollEnabled = true;

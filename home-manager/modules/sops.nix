@@ -13,6 +13,8 @@
       sshKeyPaths = [];
     };
 
-    secrets.ssh_github_key = {};
+    secrets.ssh_github_key = {
+      path = "${config.home.homeDirectory}/.ssh/id_github";
+    };
   };
 }

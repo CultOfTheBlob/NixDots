@@ -94,5 +94,35 @@
         servers = ["lua-language-server"];
       };
     };
+
+    haskell = {
+      enable = true;
+
+      lsp = {
+        enable = true;
+
+        servers = ["hls"];
+      };
+    };
+
+    odin = {
+      enable = true;
+
+      lsp = {
+        enable = true;
+
+        servers = ["ols"];
+      };
+    };
+
+    glsl = {
+      enable = true;
+
+      lsp = {
+        enable = true;
+
+        servers = ["glsl_analyzer"];
+      };
+    };
   };
 }

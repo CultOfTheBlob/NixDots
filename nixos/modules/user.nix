@@ -7,7 +7,7 @@
     defaultUserShell = pkgs.nushell;
     users.blob = {
       isNormalUser = true;
-      description = "Cult Of The Blob";
+      description = "Thomas";
       extraGroups = ["networkmanager" "wheel" "storage" "plugdev"];
     };
   };

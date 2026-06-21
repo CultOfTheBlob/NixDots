@@ -9,6 +9,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+thiserror = "2.0.18"
 color-eyre = "0.6.5"
 iced = { version =  "0.14.0", features = ["svg", "tokio"] }
 directories = "6.0.0"

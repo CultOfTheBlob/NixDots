@@ -119,8 +119,7 @@
         **/*.rs.bk
         *.pdb
         **/mutants.out*/
-        /target
-        /result
+        result
         .direnv
       '';
       tracked = true;
@@ -189,7 +188,6 @@
     {
       program = "kitty";
       args = [
-        "--detach"
         "--class"
         "console"
       ];

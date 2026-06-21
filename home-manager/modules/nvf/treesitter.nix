@@ -14,6 +14,7 @@
       just
       qmljs
       kdl
+      xml
     ];
 
     addDefaultGrammars = true;
@@ -21,7 +22,7 @@
     fold = true;
 
     highlight.enable = true;
-    indent.enable = false;
+    indent.enable = true;
     textobjects.enable = true;
   };
 }

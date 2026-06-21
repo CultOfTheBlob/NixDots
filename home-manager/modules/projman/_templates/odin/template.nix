@@ -1,16 +1,7 @@
 {
   dir_structure = [
     {
-      name = "lua";
-      sub_dirs = [
-        {
-          name = "#{name}";
-          sub_dirs = [];
-        }
-      ];
-    }
-    {
-      name = "nix";
+      name = "src";
       sub_dirs = [];
     }
   ];
@@ -21,52 +12,49 @@
       tracked = true;
     }
     {
-      path = "nix/package.nix";
-      content = builtins.readFile ./files/package.nix;
-      tracked = false;
-    }
-    {
-      path = "nix/outputs.nix";
-      content = builtins.readFile ./files/outputs.nix;
-      tracked = false;
-    }
-    {
-      path = "nix/shell.nix";
-      content = builtins.readFile ./files/shell.nix;
-      tracked = false;
-    }
-    {
-      path = "lua/#{name}/init.lua";
+      path = "ols.json";
       content =
         /*
-        lua
+        json
         */
         ''
-          local M = {}
-
-          function M.setup(opts) end
-
-          return M
+          {
+          	"$schema": "https://raw.githubusercontent.com/DanielGavin/ols/master/misc/ols.schema.json",
+          	"collections": [],
+          	"enable_semantic_tokens": false,
+          	"enable_document_symbols": true,
+          	"enable_hover": true,
+          	"enable_snippets": true,
+          	"profile": "default",
+          	"profiles": [
+          		{ "name": "default", "checker_path": ["src"], "defines": { "ODIN_DEBUG": "false" }},
+          		{ "name": "linux_profile", "os": "linux", "checker_path": ["src/main.odin"], "defines": { "ODIN_DEBUG": "false" }},
+          		{ "name": "mac_profile", "os": "darwin", "arch": "arm64", "defines": { "ODIN_DEBUG": "false" }},
+          		{ "name": "windows_profile", "os": "windows", "checker_path": ["src"], "defines": { "ODIN_DEBUG": "false" }}
+          	]
+          }
         '';
       tracked = false;
     }
     {
-      path = ".luacheckrc";
+      path = "src/main.odin";
       content =
         /*
-        lua
+        odin
         */
         ''
-          globals = { "vim" }
+          package main
+
+          main :: proc() {}
         '';
-      tracked = true;
+      tracked = false;
     }
     {
       path = ".rgignore";
       content = ''
         *
-        !lua/
-        !lua/**
+        !src/
+        !src/**
       '';
       tracked = true;
     }
@@ -80,32 +68,6 @@
     {
       path = ".gitignore";
       content = ''
-        .nvimlog
-        nvim.log
-        luac.out
-        *.tar.gz
-        *.o
-        *.os
-        *.ko
-        *.obj
-        *.elf
-        *.gch
-        *.pch
-        *.lib
-        *.a
-        *.la
-        *.lo
-        *.def
-        *.exp
-        *.dll
-        *.so
-        *.so.*
-        *.dylib
-        *.out
-        *.app
-        *.i*86
-        *.x86_64
-        *.hex
         /result
         .direnv
       '';
@@ -121,9 +83,10 @@
           default: run
 
           run:
-            @nvim-dev
+            @odin run src
 
           push:
+            @nix build
             @git push
         '';
       tracked = true;
@@ -169,6 +132,6 @@
       ];
     }
   ];
-  included_paths = ["lua" "nix"];
+  included_paths = ["src"];
   excluded_paths = [];
 }

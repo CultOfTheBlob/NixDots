@@ -14,22 +14,34 @@
     };
 
     templates = {
-      rustWithIced = import ./_templates/rustWithIced/template.nix;
-
-      neovimPlugin = import ./_templates/neovimPlugin/template.nix;
+      RustWithIced = import ./_templates/rustWithIced/template.nix;
+      NeovimPlugin = import ./_templates/neovimPlugin/template.nix;
+      GodotMono = import ./_templates/godotMono/template.nix;
+      GodotRust = import ./_templates/godotRust/template.nix;
+      Odin = import ./_templates/odin/template.nix;
     };
 
     icons = {
-      rustWithIced = ./_templates/rustWithIced/icon.svg;
-      neovimPlugin = ./_templates/neovimPlugin/icon.svg;
+      RustWithIced = ./_templates/rustWithIced/icon.svg;
+      NeovimPlugin = ./_templates/neovimPlugin/icon.svg;
+      GodotMono = ./_templates/godotMono/icon.svg;
+      GodotRust = ./_templates/godotRust/icon.svg;
+      Odin = ./_templates/odin/icon.svg;
     };
 
     projects = [
       {
-        name = "NewProject";
-        path = "/home/blob/Projects/NewProject";
-        template_name = "rustWithIced";
-        repo = "https://github.com/CultOfTheBlob/TestProject.git";
+        name = "projman";
+        path = "/home/blob/Projects/projman";
+        template_name = "RustWithIced";
+        repo = "git@github.com:CultOfTheBlob/ProjMan.git";
+        license = "MIT";
+      }
+      {
+        name = "godot-scenetree";
+        path = "/home/blob/Projects/godot-scenetree";
+        template_name = "NeovimPlugin";
+        repo = "git@github.com:CultOfTheBlob/godot-scenetree.nvim.git";
         license = "MIT";
       }
     ];

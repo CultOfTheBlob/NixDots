@@ -181,6 +181,7 @@
             key = "<leader>S";
             mode = "n";
             action = ":Scenetree<cr>";
+            desc = "Open Scenetree";
           }
         ];
       };

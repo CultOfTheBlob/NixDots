@@ -1,0 +1,63 @@
+[package]
+name = "#{name}"
+license-file = "#{license}"
+repository = "#{repo}"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+thiserror = "2.0.18"
+godot = "0.5.2"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+
+print_stdout = "warn"
+print_stderr = "warn"
+dbg_macro = "warn"
+
+unwrap_used = "warn"
+expect_used = "warn"
+exit = "warn"
+mem_forget = "warn"
+create_dir = "warn"
+assertions_on_result_states = "warn"
+tests_outside_test_module = "warn"
+
+missing_errors_doc = "warn"
+missing_safety_doc = "warn"
+missing_panics_doc = "warn"
+
+large_types_passed_by_value = "warn"
+unnecessary_box_returns = "warn"
+
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
+cast_precision_loss = "allow"
+cast_possible_wrap = "allow"
+float_cmp_const = "allow"
+
+missing_const_for_fn = "allow"
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+struct_excessive_bools = "allow"
+too_many_lines = "allow"
+fn_params_excessive_bools = "allow"
+
+cargo_common_metadata = "allow"
+
+wildcard_imports = "allow"
+let_underscore_must_use = "allow"
+significant_drop_tightening = "allow"
+
+[lints.rust]
+missing_docs = "warn"
+
+irrefutable_let_patterns = "allow"
+non_snake_case = "allow"

@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }: let
   inherit (inputs.nvf.lib.nvim.dag) entryAnywhere;
@@ -60,7 +59,7 @@ in {
 
       highlight = {
         LspInlayHint = {
-          fg = "#${config.colors.base03}";
+          fg = "#5f6b95";
           italic = true;
         };
       };
@@ -106,15 +105,15 @@ in {
             })
           '';
 
-        treesitter-indent = entryAnywhere ''
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "nix" },
-            callback = function()
-              local ts_indent = require("nvim-treesitter.indent")
-              vim.bo.indentexpr = "v:lua.require'nvim-treesitter.indent'.get_indent(v:lnum)"
-            end,
-          })
-        '';
+        # treesitter-indent = entryAnywhere ''
+        #   vim.api.nvim_create_autocmd("FileType", {
+        #     pattern = { "nix" },
+        #     callback = function()
+        #       local ts_indent = require("nvim-treesitter.indent")
+        #       vim.bo.indentexpr = "v:lua.require'nvim-treesitter.indent'.get_indent(v:lnum)"
+        #     end,
+        #   })
+        # '';
       };
     };
   };
