@@ -4,7 +4,7 @@
 
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
         serverAliveInterval = 60;
         serverAliveCountMax = 3;
@@ -14,9 +14,7 @@
         hostname = "github.com";
         user = "git";
         identityFile = config.sops.secrets.ssh_github_key.path;
-        extraOptions = {
-          IdentitiesOnly = "yes";
-        };
+        IdentitiesOnly = "yes";
       };
     };
   };

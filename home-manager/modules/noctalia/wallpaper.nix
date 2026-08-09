@@ -44,10 +44,10 @@
 
   home.file.".cache/noctalia/wallpapers.json" = {
     text = builtins.toJSON {
-      defaultWallpaper = toString ../assets/wallpaper.png;
+      defaultWallpaper = toString ../assets/wallpaper-dp1.png;
       wallpapers = {
-        "DP-1" = toString ../assets/wallpaper.png;
-        "DP-2" = toString ../assets/wallpaper.png;
+        "DP-1" = toString ../assets/wallpaper-dp1.png;
+        "DP-2" = toString ../assets/wallpaper-dp2.png;
       };
     };
   };

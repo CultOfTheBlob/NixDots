@@ -5,7 +5,7 @@
     position = "top_right";
     showHeader = true;
     showKeybinds = true;
-    largeButtonsStyle = true;
+    largeButtonsStyle = false;
     largeButtonsLayout = "single-row";
     powerOptions = [
       {

@@ -74,51 +74,51 @@
       plugin = {
         prepend_previewers = [
           {
-            name = "*/";
+            url = "*/";
             run = "piper -- ${pkgs.eza}/bin/eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes $1";
           }
           {
-            name = "*.tar*";
+            url = "*.tar*";
             run = "piper -- ouch list --tree --gitignore $1";
           }
           {
-            name = "*.md";
+            url = "*.md";
             run = "rich-preview";
           }
           {
-            name = "*.rst";
+            url = "*.rst";
             run = "rich-preview";
           }
           {
-            name = "*.ipynb";
+            url = "*.ipynb";
             run = "rich-preview";
           }
           {
-            name = "*.csv";
+            url = "*.csv";
             run = "duckdb";
           }
           {
-            name = "*.tsv";
+            url = "*.tsv";
             run = "duckdb";
           }
           {
-            name = "*.json";
+            url = "*.json";
             run = "duckdb";
           }
           {
-            name = "*.parquet";
+            url = "*.parquet";
             run = "duckdb";
           }
           {
-            name = "*.xlsx";
+            url = "*.xlsx";
             run = "duckdb";
           }
           {
-            name = "*.db";
+            url = "*.db";
             run = "duckdb";
           }
           {
-            name = "*.duckdb";
+            url = "*.duckdb";
             run = "duckdb";
           }
           {
@@ -137,27 +137,27 @@
 
         prepend_preloaders = [
           {
-            name = "*.csv";
+            url = "*.csv";
             run = "duckdb";
             multi = false;
           }
           {
-            name = "*.tsv";
+            url = "*.tsv";
             run = "duckdb";
             multi = false;
           }
           {
-            name = "*.json";
+            url = "*.json";
             run = "duckdb";
             multi = false;
           }
           {
-            name = "*.parquet";
+            url = "*.parquet";
             run = "duckdb";
             multi = false;
           }
           {
-            name = "*.xlsx";
+            url = "*.xlsx";
             run = "duckdb";
             multi = false;
           }
@@ -178,13 +178,15 @@
         prepend_fetchers = [
           {
             id = "git";
-            name = "*";
+            url = "*";
             run = "git";
+            group = "git";
           }
           {
             id = "git";
-            name = "*/";
+            url = "*/";
             run = "git";
+            group = "git";
           }
         ];
       };

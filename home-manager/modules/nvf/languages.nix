@@ -95,16 +95,6 @@
       };
     };
 
-    haskell = {
-      enable = true;
-
-      lsp = {
-        enable = true;
-
-        servers = ["hls"];
-      };
-    };
-
     odin = {
       enable = true;
 

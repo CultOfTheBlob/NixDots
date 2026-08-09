@@ -30,9 +30,19 @@
         exec ${pkgs.neovim}/bin/nvim -u ${testRc} "$@"
       '';
     in {
-      packages.default = import ./nix/package.nix {inherit self pkgs;};
+      packages.default = pkgs.vimUtils.buildVimPlugin {
+        pname = "#{name}.nvim";
+        version = self.shortRev or "dev";
+        src = self;
+      };
 
-      devShells.default = import ./nix/shell.nix {inherit pkgs nvim-dev;};
-    })
-    // (import ./nix/outputs.nix {inherit self;});
+      devShells.default = pkgs.mkShell {
+        name = "nvim-plugin-dev";
+
+        packages = with pkgs; [
+          nvim-dev
+          just
+        ];
+      };
+    });
 }

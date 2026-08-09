@@ -2,7 +2,7 @@
   programs.noctalia-shell.settings.idle = {
     enabled = true;
     screenOffTimeout = 0;
-    lockTimeout = 1800;
+    lockTimeout = 0;
     suspendTimeout = 0;
     fadeDuration = 5;
     screenOffCommand = "";

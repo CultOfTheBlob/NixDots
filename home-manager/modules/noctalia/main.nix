@@ -36,7 +36,7 @@
         allowPasswordWithFprintd = false;
         clockStyle = "analog";
         clockFormat = "hh\nmm";
-        passwordChars = true;
+        passwordChars = false;
         lockScreenMonitors = ["DP-1"];
         lockScreenBlur = 0.5;
         lockScreenTint = 0.1;

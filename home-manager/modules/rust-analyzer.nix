@@ -5,6 +5,7 @@
     source = (pkgs.formats.toml {}).generate "rust-analyzer.toml" {
       inlayHints = {
         closingBraceHints.enable = false;
+        chainingHints.enable = false;
       };
     };
   };

@@ -62,8 +62,8 @@ in {
     obsidian
     gparted
     qalculate-gtk
-    cavalier
     keymapp
+    prismlauncher
 
     # Utils
     inputs.quickshell.packages.${system}.default

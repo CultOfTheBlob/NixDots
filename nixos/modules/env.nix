@@ -10,5 +10,7 @@
     GODOT_WAYLAND_DISABLE_LIBDECOR = "1";
 
     NIRI_CONFIG = "/home/${user}/.config/niri/main.kdl";
+
+    GTK_USE_PORTAL = "1";
   };
 }

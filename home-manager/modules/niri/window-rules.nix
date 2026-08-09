@@ -32,6 +32,12 @@
       default-column-width = {proportion = 0.7;};
     }
     {
+      matches = [{app-id = "org.freedesktop.impl.portal.desktop.kde";}];
+      open-floating = true;
+      default-window-height = {proportion = 0.7;};
+      default-column-width = {proportion = 0.7;};
+    }
+    {
       matches = [{app-id = "pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol";}];
       open-floating = true;
     }
@@ -43,7 +49,6 @@
       matches = [{title = "Picture-in-Picture";}];
       open-floating = true;
     }
-
     {
       matches = [{app-id = "zen-beta";}];
       open-on-output = "DP-1";
@@ -73,7 +78,7 @@
       open-on-output = "DP-2";
     }
     {
-      matches = [{title = "Godot";}];
+      matches = [{app-id = "org.godotengine.*";}];
       open-on-output = "DP-1";
     }
 

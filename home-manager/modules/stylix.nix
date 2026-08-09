@@ -8,7 +8,7 @@
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
-    image = ./assets/wallpaper.png;
+    image = ./assets/wallpaper-dp1.png;
 
     polarity = "dark";
 

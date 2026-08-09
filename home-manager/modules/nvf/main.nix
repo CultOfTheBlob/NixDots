@@ -77,6 +77,7 @@ in {
               return orig(client)
             end
           '';
+
         qml-lsp =
           entryAnywhere
           /*
@@ -90,6 +91,7 @@ in {
             })
             vim.lsp.enable("qml_ls")
           '';
+
         qml-indent =
           entryAnywhere
           /*
@@ -102,6 +104,20 @@ in {
                 vim.bo.indentexpr = ""
                 vim.bo.smartindent = true
               end
+            })
+          '';
+
+        mini-pairs-rust =
+          entryAnywhere
+          /*
+          lua
+          */
+          ''
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "rust",
+              callback = function()
+                vim.keymap.set('i', "'", "'", { buffer = true, remap = false, silent = true })
+              end,
             })
           '';
 

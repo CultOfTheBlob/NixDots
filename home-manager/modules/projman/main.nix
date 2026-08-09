@@ -13,20 +13,13 @@
       };
     };
 
-    templates = {
-      RustWithIced = import ./_templates/rustWithIced/template.nix;
-      NeovimPlugin = import ./_templates/neovimPlugin/template.nix;
-      GodotMono = import ./_templates/godotMono/template.nix;
-      GodotRust = import ./_templates/godotRust/template.nix;
-      Odin = import ./_templates/odin/template.nix;
-    };
-
     icons = {
-      RustWithIced = ./_templates/rustWithIced/icon.svg;
-      NeovimPlugin = ./_templates/neovimPlugin/icon.svg;
-      GodotMono = ./_templates/godotMono/icon.svg;
-      GodotRust = ./_templates/godotRust/icon.svg;
-      Odin = ./_templates/odin/icon.svg;
+      RustWithIced = ./templates/rustWithIced/icon.svg;
+      NeovimPlugin = ./templates/neovimPlugin/icon.svg;
+      GodotMono = ./templates/godotMono/icon.svg;
+      GodotRust = ./templates/godotRust/icon.svg;
+      Odin = ./templates/odin/icon.svg;
+      Rust = ./templates/rust/icon.svg;
     };
 
     projects = [
