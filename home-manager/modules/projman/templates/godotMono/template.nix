@@ -1,5 +1,7 @@
 {
   programs.projman.templates.GodotMono = {
+    icon = ./icon.svg;
+
     dir_structure = [
       {
         name = "Assets";
@@ -37,27 +39,23 @@
     files = [
       {
         path = "flake.nix";
-        content = builtins.readFile ./_files/flake.nix;
-        tracked = false;
+        contents = builtins.readFile ./_files/flake.nix;
       }
       {
         path = "Lib/Lib.cs";
-        content = builtins.readFile ./_files/lib.cs;
-        tracked = false;
+        contents = builtins.readFile ./_files/lib.cs;
       }
       {
         path = "Tests/LibOptionTest.cs";
-        content = builtins.readFile ./_files/libOptionTest.cs;
-        tracked = false;
+        contents = builtins.readFile ./_files/libOptionTest.cs;
       }
       {
         path = "Tests/LibResultTest.cs";
-        content = builtins.readFile ./_files/libResultTest.cs;
-        tracked = false;
+        contents = builtins.readFile ./_files/libResultTest.cs;
       }
       {
         path = "project.godot";
-        content =
+        contents =
           /*
           toml
           */
@@ -85,11 +83,10 @@
             "res://Lib/": "red"
             }
           '';
-        tracked = false;
       }
       {
         path = "#{name}.csproj";
-        content =
+        contents =
           /*
           xml
           */
@@ -107,11 +104,10 @@
               </ItemGroup>
             </Project>
           '';
-        tracked = true;
       }
       {
         path = "Tests/Tests.csproj";
-        content =
+        contents =
           /*
           xml
           */
@@ -150,11 +146,10 @@
               </ItemGroup>
             </Project>
           '';
-        tracked = true;
       }
       {
         path = ".rgignore";
-        content = ''
+        contents = ''
           *
 
           !*.cs
@@ -162,18 +157,16 @@
           !*.gdshader
           !*.glsl
         '';
-        tracked = true;
       }
       {
         path = ".envrc";
-        content = ''
+        contents = ''
           use flake
         '';
-        tracked = true;
       }
       {
         path = ".gitignore";
-        content = ''
+        contents = ''
           .godot/
           .nomedia/
           .import/
@@ -186,11 +179,10 @@
           result
           .direnv
         '';
-        tracked = true;
       }
       {
         path = ".justfile";
-        content =
+        contents =
           /*
           just
           */
@@ -214,11 +206,10 @@
             push: build
               @git push
           '';
-        tracked = true;
       }
       {
         path = "Assets/icon.svg";
-        content = builtins.readFile ./_files/godotIcon.svg;
+        contents = builtins.readFile ./_files/godotIcon.svg;
       }
     ];
     build = [

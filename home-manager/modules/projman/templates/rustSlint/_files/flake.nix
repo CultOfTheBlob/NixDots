@@ -29,9 +29,10 @@
     in {
       packages.default = naerskLib.buildPackage {
         src = self;
-        buildInputs = with pkgs; [glib openssl];
-        nativeBuildInputs = with pkgs; [pkg-config makeWrapper];
-        OPENSSL_NO_VENDOR = 1;
+
+        buildInputs = with pkgs; [glib];
+        nativeBuildInputs = with pkgs; [pkg-config makeWrapper fontconfig];
+
         postInstall = ''
           wrapProgram $out/bin/#{name} \
             --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath (with pkgs; [
@@ -49,9 +50,13 @@
           (rust-bin.nightly."2026-02-01".default.override {
             extensions = ["rust-src" "rust-analyzer" "clippy" "rustfmt"];
           })
-          glib
+
+          slint-lsp
           just
+
+          glib
         ];
+
         LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
           pkgs.wayland
           pkgs.libxkbcommon
@@ -59,7 +64,8 @@
           pkgs.mesa
           pkgs.vulkan-loader
         ];
-        nativeBuildInputs = [pkgs.pkg-config];
+
+        nativeBuildInputs = [pkgs.pkg-config pkgs.fontconfig];
       };
     });
 }

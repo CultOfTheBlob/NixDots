@@ -13,20 +13,11 @@
       };
     };
 
-    icons = {
-      RustWithIced = ./templates/rustWithIced/icon.svg;
-      NeovimPlugin = ./templates/neovimPlugin/icon.svg;
-      GodotMono = ./templates/godotMono/icon.svg;
-      GodotRust = ./templates/godotRust/icon.svg;
-      Odin = ./templates/odin/icon.svg;
-      Rust = ./templates/rust/icon.svg;
-    };
-
     projects = [
       {
-        name = "projman";
-        path = "/home/blob/Projects/projman";
-        template_name = "RustWithIced";
+        name = "ProjMan";
+        path = "/home/blob/Projects/ProjMan";
+        template_name = "Rust";
         repo = "git@github.com:CultOfTheBlob/ProjMan.git";
         license = "MIT";
       }
@@ -36,6 +27,27 @@
         template_name = "NeovimPlugin";
         repo = "git@github.com:CultOfTheBlob/godot-scenetree.nvim.git";
         license = "MIT";
+      }
+      {
+        name = "BlackHole";
+        path = "/home/blob/Projects/BlackHole";
+        template_name = "Odin";
+        repo = "git@github.com:CultOfTheBlob/BlackHole.git";
+        license = "MIT";
+      }
+      {
+        name = "ExperimentVector";
+        path = "/home/blob/Projects/ExperimentVector/";
+        template_name = "GodotRust";
+        repo = "git@github.com:MalfractureStudios/ExperimentVector.git";
+        license = "MIT";
+      }
+      {
+        name = "ReanimateAnimations";
+        path = "/home/blob/Projects/ReanimateAnimations";
+        repo = "git@github.com:CultOfTheBlob/ReanimateAnimations.git";
+        license = "MIT";
+        template_name = "HaskellReanimate";
       }
     ];
   };

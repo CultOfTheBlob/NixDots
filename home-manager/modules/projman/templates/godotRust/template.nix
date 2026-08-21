@@ -1,6 +1,17 @@
 {
   programs.projman.templates.GodotRust = {
+    icon = ./icon.svg;
+
     dir_structure = [
+      {
+        name = ".github";
+        sub_dirs = [
+          {
+            name = "workflows";
+            sub_dirs = [];
+          }
+        ];
+      }
       {
         name = "assets";
         sub_dirs = [];
@@ -46,18 +57,59 @@
     ];
     files = [
       {
+        path = ".github/workflows/ci.yml";
+        contents =
+          /*
+          yaml
+          */
+          ''
+
+            name: CI
+
+            on:
+              push:
+                branches: [ main ]
+              pull_request:
+                branches: [ main ]
+
+            jobs:
+              build:
+                runs-on: ubuntu-latest
+
+                steps:
+                  - name: Checkout Code
+                    uses: actions/checkout@v4
+
+                  - name: Install Nix
+                    uses: DeterminateSystems/nix-installer-action@v14
+
+                  - name: Setup Cache
+                    uses: DeterminateSystems/magic-nix-cache-action@v9
+
+                  - name: Check Formatting
+                    run: nix develop --command cargo fmt --check
+
+                  - name: Lint
+                    run: nix develop --command cargo clippy -- -D warnings
+
+                  - name: Test
+                    run: nix develop --command cargo test
+
+                  - name: Build
+                    run: nix build
+          '';
+      }
+      {
         path = "flake.nix";
-        content = builtins.readFile ./_files/flake.nix;
-        tracked = false;
+        contents = builtins.readFile ./_files/flake.nix;
       }
       {
         path = "Cargo.toml";
-        content = builtins.readFile ./_files/cargo.toml;
-        tracked = false;
+        contents = builtins.readFile ./_files/cargo.toml;
       }
       {
         path = "src/lib.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -76,11 +128,10 @@
             #[gdextension]
             unsafe impl ExtensionLibrary for GDExtension {}
           '';
-        tracked = false;
       }
       {
         path = "src/error.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -88,11 +139,10 @@
             #[derive(thiserror::Error, Debug)]
             pub enum Error {}
           '';
-        tracked = false;
       }
       {
         path = "src/prelude.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -102,11 +152,10 @@
             #[expect(unused)]
             pub type Result<T> = core::result::Result<T, Error>;
           '';
-        tracked = false;
       }
       {
         path = "src/utils/mod.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -114,11 +163,10 @@
             #[expect(unused_imports)]
             use crate::prelude::*;
           '';
-        tracked = false;
       }
       {
         path = "src/components/mod.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -126,11 +174,10 @@
             #[expect(unused_imports)]
             use crate::prelude::*;
           '';
-        tracked = false;
       }
       {
         path = "src/objects/mod.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -138,11 +185,10 @@
             #[expect(unused_imports)]
             use crate::prelude::*;
           '';
-        tracked = false;
       }
       {
         path = "src/scenes/mod.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -150,11 +196,10 @@
             #[expect(unused_imports)]
             use crate::prelude::*;
           '';
-        tracked = false;
       }
       {
         path = "project.godot";
-        content =
+        contents =
           /*
           toml
           */
@@ -182,11 +227,10 @@
               "res://tests/": "green"
             }
           '';
-        tracked = false;
       }
       {
         path = "#{name}.gdextension";
-        content =
+        contents =
           /*
           toml
           */
@@ -206,11 +250,11 @@
       }
       {
         path = "target/.gdignore";
-        content = "";
+        contents = "";
       }
       {
         path = ".rgignore";
-        content = ''
+        contents = ''
           *
 
           !src/
@@ -223,18 +267,16 @@
           !*.gdshader
           !*.glsl
         '';
-        tracked = true;
       }
       {
         path = ".envrc";
-        content = ''
+        contents = ''
           use flake
         '';
-        tracked = true;
       }
       {
         path = ".gitignore";
-        content = ''
+        contents = ''
           .godot/
           .nomedia/
           .import/
@@ -250,11 +292,10 @@
           result
           .direnv
         '';
-        tracked = true;
       }
       {
         path = ".justfile";
-        content =
+        contents =
           /*
           just
           */
@@ -275,16 +316,11 @@
 
             build: test
               @cargo build
-
-            push: build
-              @git push
           '';
-        tracked = true;
       }
       {
         path = "assets/godot_icon.svg";
-        content = builtins.readFile ./_files/godotIcon.svg;
-        tracked = false;
+        contents = builtins.readFile ./_files/godotIcon.svg;
       }
     ];
     build = [

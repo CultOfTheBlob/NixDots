@@ -95,6 +95,18 @@
       };
     };
 
+    haskell = {
+      enable = true;
+
+      lsp = {
+        enable = false;
+
+        servers = [];
+      };
+
+      dap.enable = false;
+    };
+
     odin = {
       enable = true;
 

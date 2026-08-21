@@ -1,5 +1,7 @@
 {
   programs.projman.templates.Odin = {
+    icon = ./icon.svg;
+
     dir_structure = [
       {
         name = "src";
@@ -9,12 +11,11 @@
     files = [
       {
         path = "flake.nix";
-        content = builtins.readFile ./_files/flake.nix;
-        tracked = false;
+        contents = builtins.readFile ./_files/flake.nix;
       }
       {
         path = "ols.json";
-        content =
+        contents =
           /*
           json
           */
@@ -35,11 +36,10 @@
             	]
             }
           '';
-        tracked = false;
       }
       {
         path = "src/main.odin";
-        content =
+        contents =
           /*
           odin
           */
@@ -48,35 +48,31 @@
 
             main :: proc() {}
           '';
-        tracked = false;
       }
       {
         path = ".rgignore";
-        content = ''
+        contents = ''
           *
           !src/
           !src/**
         '';
-        tracked = true;
       }
       {
         path = ".envrc";
-        content = ''
+        contents = ''
           use flake
         '';
-        tracked = true;
       }
       {
         path = ".gitignore";
-        content = ''
+        contents = ''
           /result
           .direnv
         '';
-        tracked = true;
       }
       {
         path = ".justfile";
-        content =
+        contents =
           /*
           just
           */
@@ -90,7 +86,6 @@
               @nix build
               @git push
           '';
-        tracked = true;
       }
     ];
     build = [

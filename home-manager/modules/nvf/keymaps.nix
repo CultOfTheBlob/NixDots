@@ -79,12 +79,12 @@
       }
 
       {
-        key = "<C-I>";
+        key = "<c-i>";
         mode = "i";
         action = "<cmd>lua require('luasnip').jump(1)<CR>";
       }
       {
-        key = "<C-E>";
+        key = "<c-e>";
         mode = "i";
         action = "<cmd>lua require('luasnip').jump(-1)<CR>";
       }

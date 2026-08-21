@@ -1,5 +1,7 @@
 {
   programs.projman.templates.NeovimPlugin = {
+    icon = ./icon.svg;
+
     dir_structure = [
       {
         name = "lua";
@@ -18,12 +20,11 @@
     files = [
       {
         path = "flake.nix";
-        content = builtins.readFile ./_files/flake.nix;
-        tracked = false;
+        contents = builtins.readFile ./_files/flake.nix;
       }
       {
         path = "lua/#{name}/init.lua";
-        content =
+        contents =
           /*
           lua
           */
@@ -34,38 +35,34 @@
 
             return M
           '';
-        tracked = false;
       }
       {
         path = ".luacheckrc";
-        content =
+        contents =
           /*
           lua
           */
           ''
             globals = { "vim" }
           '';
-        tracked = true;
       }
       {
         path = ".rgignore";
-        content = ''
+        contents = ''
           *
           !lua/
           !lua/**
         '';
-        tracked = true;
       }
       {
         path = ".envrc";
-        content = ''
+        contents = ''
           use flake
         '';
-        tracked = true;
       }
       {
         path = ".gitignore";
-        content = ''
+        contents = ''
           .nvimlog
           nvim.log
           luac.out
@@ -95,11 +92,10 @@
           /result
           .direnv
         '';
-        tracked = true;
       }
       {
         path = ".justfile";
-        content =
+        contents =
           /*
           just
           */
@@ -112,7 +108,6 @@
             push:
               @git push
           '';
-        tracked = true;
       }
     ];
     build = [

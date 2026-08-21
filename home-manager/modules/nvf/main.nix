@@ -78,31 +78,48 @@ in {
             end
           '';
 
-        qml-lsp =
-          entryAnywhere
-          /*
-          lua
-          */
-          ''
-            vim.lsp.config("qml_ls", {
-              cmd = { "qml-language-server" },
-              filetypes = { "qml" },
-              root_markers = { ".git", "qmldir" },
-            })
-            vim.lsp.enable("qml_ls")
-          '';
+        # qml-lsp =
+        #   entryAnywhere
+        #   /*
+        #   lua
+        #   */
+        #   ''
+        #     vim.lsp.config("qml_ls", {
+        #       cmd = { "qml-language-server" },
+        #       filetypes = { "qml" },
+        #       root_markers = { ".git", "qmldir" },
+        #     })
+        #     vim.lsp.enable("qml_ls")
+        #   '';
+        #
+        # qml-indent =
+        #   entryAnywhere
+        #   /*
+        #   lua
+        #   */
+        #   ''
+        #     vim.api.nvim_create_autocmd("FileType", {
+        #       pattern = "qml",
+        #       callback = function()
+        #         vim.bo.indentexpr = ""
+        #         vim.bo.smartindent = true
+        #       end
+        #     })
+        #   '';
 
-        qml-indent =
+        slint =
           entryAnywhere
           /*
           lua
           */
           ''
             vim.api.nvim_create_autocmd("FileType", {
-              pattern = "qml",
+              pattern = "slint",
               callback = function()
                 vim.bo.indentexpr = ""
                 vim.bo.smartindent = true
+                vim.bo.tabstop = 4
+                vim.bo.shiftwidth = 4
               end
             })
           '';

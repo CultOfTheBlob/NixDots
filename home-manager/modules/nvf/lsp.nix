@@ -5,7 +5,7 @@
     formatOnSave = true;
 
     inlayHints = {
-      enable = true;
+      enable = false;
     };
 
     lspkind = {
@@ -53,16 +53,22 @@
           /*
           lua
           */
-          ''
-            vim.lsp.enable("gdscript")
-          '';
+          ''vim.lsp.enable("gdscript")'';
         gdshader =
           /*
           lua
           */
-          ''
-            vim.lsp.enable("gdshader_lsp")
-          '';
+          ''vim.lsp.enable("gdshader_lsp")'';
+        hls =
+          /*
+          lua
+          */
+          ''vim.lsp.enable("hls")'';
+        slint_lsp =
+          /*
+          lua
+          */
+          ''vim.lsp.enable("slint_lsp")'';
       };
     };
 

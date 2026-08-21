@@ -15,6 +15,7 @@
       qmljs
       kdl
       xml
+      slint
     ];
 
     addDefaultGrammars = true;

@@ -1,6 +1,17 @@
 {
   programs.projman.templates.Rust = {
+    icon = ./icon.svg;
+
     dir_structure = [
+      {
+        name = ".github";
+        sub_dirs = [
+          {
+            name = "workflows";
+            sub_dirs = [];
+          }
+        ];
+      }
       {
         name = "src";
         sub_dirs = [
@@ -17,18 +28,59 @@
     ];
     files = [
       {
+        path = ".github/workflows/ci.yml";
+        contents =
+          /*
+          yaml
+          */
+          ''
+
+            name: CI
+
+            on:
+              push:
+                branches: [ main ]
+              pull_request:
+                branches: [ main ]
+
+            jobs:
+              build:
+                runs-on: ubuntu-latest
+
+                steps:
+                  - name: Checkout Code
+                    uses: actions/checkout@v4
+
+                  - name: Install Nix
+                    uses: DeterminateSystems/nix-installer-action@v14
+
+                  - name: Setup Cache
+                    uses: DeterminateSystems/magic-nix-cache-action@v9
+
+                  - name: Check Formatting
+                    run: nix develop --command cargo fmt --check
+
+                  - name: Lint
+                    run: nix develop --command cargo clippy -- -D warnings
+
+                  - name: Test
+                    run: nix develop --command cargo test
+
+                  - name: Build
+                    run: nix build
+          '';
+      }
+      {
         path = "flake.nix";
-        content = builtins.readFile ./_files/flake.nix;
-        tracked = false;
+        contents = builtins.readFile ./_files/flake.nix;
       }
       {
         path = "Cargo.toml";
-        content = builtins.readFile ./_files/cargo.toml;
-        tracked = false;
+        contents = builtins.readFile ./_files/cargo.toml;
       }
       {
         path = "src/main.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -46,11 +98,10 @@
                 Ok(())
             }
           '';
-        tracked = false;
       }
       {
         path = "src/error.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -58,11 +109,10 @@
             #[derive(thiserror::Error, Debug)]
             pub enum Error {}
           '';
-        tracked = false;
       }
       {
         path = "src/prelude.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -71,11 +121,10 @@
 
             pub type Result<T> = core::result::Result<T, Error>;
           '';
-        tracked = false;
       }
       {
         path = "src/utils/mod.rs";
-        content =
+        contents =
           /*
           rust
           */
@@ -83,29 +132,26 @@
             #[expect(unused_imports)]
             use crate::prelude::*;
           '';
-        tracked = false;
       }
       {
         path = ".rgignore";
-        content = ''
+        contents = ''
           *
           !src/
           !src/**
           !tests/
           !tests/**
         '';
-        tracked = true;
       }
       {
         path = ".envrc";
-        content = ''
+        contents = ''
           use flake
         '';
-        tracked = true;
       }
       {
         path = ".gitignore";
-        content = ''
+        contents = ''
           debug
           target
           **/*.rs.bk
@@ -114,11 +160,10 @@
           result
           .direnv
         '';
-        tracked = true;
       }
       {
         path = ".justfile";
-        content =
+        contents =
           /*
           just
           */
@@ -139,11 +184,7 @@
 
             build: test
               @nix build
-
-            push: build
-              @git push
           '';
-        tracked = true;
       }
     ];
     build = [
@@ -195,5 +236,7 @@
         ];
       }
     ];
+    included_paths = ["src" "tests"];
+    excluded_paths = ["target"];
   };
 }

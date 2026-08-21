@@ -1,8 +1,11 @@
 keys:
   - &me 54EB BF62 D561 8922 44C8  F29E A8F3 F868 F21F D5F8
+  - &my_age age1a97esnqff0cz6g74l9hglkumfw829zdt679t6wxgsz2ez2h5sgmqtgw6j5
 
 creation_rules:
   - path_regex: secrets/.*
     key_groups:
-      - pgp:
-        - *me
+      - age:
+          - *my_age
+        pgp:
+          - *me
