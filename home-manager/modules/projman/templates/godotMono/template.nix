@@ -5,35 +5,35 @@
     dir_structure = [
       {
         name = "Assets";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Components";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Objects";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Scenes";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Globals";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Tests";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Builds";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "Lib";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
     ];
     files = [
@@ -55,97 +55,85 @@
       }
       {
         path = "project.godot";
-        contents =
-          /*
-          toml
-          */
-          ''
-            config_version=5
+        contents = /* toml */ ''
+          config_version=5
 
-            [application]
-              config/name="#{name}"
-              config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+          [application]
+            config/name="#{name}"
+            config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
-            [dotnet]
-              project/assembly_name="#{name}"
+          [dotnet]
+            project/assembly_name="#{name}"
 
 
-            [file_customization]
+          [file_customization]
 
-            folder_colors={
-            "res://Assets/": "purple",
-            "res://Builds/": "gray",
-            "res://Components/": "blue",
-            "res://Globals/": "yellow",
-            "res://Objects/": "teal",
-            "res://Scenes/": "orange",
-            "res://Tests/": "green",
-            "res://Lib/": "red"
-            }
-          '';
+          folder_colors={
+          "res://Assets/": "purple",
+          "res://Builds/": "gray",
+          "res://Components/": "blue",
+          "res://Globals/": "yellow",
+          "res://Objects/": "teal",
+          "res://Scenes/": "orange",
+          "res://Tests/": "green",
+          "res://Lib/": "red"
+          }
+        '';
       }
       {
         path = "#{name}.csproj";
-        contents =
-          /*
-          xml
-          */
-          ''
-            <Project Sdk="Godot.NET.Sdk/4.6.2">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-                <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
-                <EnableDynamicLoading>true</EnableDynamicLoading>
-                <Nullable>enable</Nullable>
-              </PropertyGroup>
+        contents = /* xml */ ''
+          <Project Sdk="Godot.NET.Sdk/4.6.2">
+            <PropertyGroup>
+              <TargetFramework>net8.0</TargetFramework>
+              <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+              <EnableDynamicLoading>true</EnableDynamicLoading>
+              <Nullable>enable</Nullable>
+            </PropertyGroup>
 
-              <ItemGroup>
-                <Compile Remove="Tests\**\*.cs" />
-              </ItemGroup>
-            </Project>
-          '';
+            <ItemGroup>
+              <Compile Remove="Tests\**\*.cs" />
+            </ItemGroup>
+          </Project>
+        '';
       }
       {
         path = "Tests/Tests.csproj";
-        contents =
-          /*
-          xml
-          */
-          ''
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-                <ImplicitUsings>enable</ImplicitUsings>
-                <Nullable>enable</Nullable>
-                <IsPackable>false</IsPackable>
-                <IsTestProject>true</IsTestProject>
+        contents = /* xml */ ''
+          <Project Sdk="Microsoft.NET.Sdk">
+            <PropertyGroup>
+              <TargetFramework>net8.0</TargetFramework>
+              <ImplicitUsings>enable</ImplicitUsings>
+              <Nullable>enable</Nullable>
+              <IsPackable>false</IsPackable>
+              <IsTestProject>true</IsTestProject>
 
-                <GodotProjectDir>$(MSBuildProjectDirectory)\..\..</GodotProjectDir>
+              <GodotProjectDir>$(MSBuildProjectDirectory)\..\..</GodotProjectDir>
 
-                <EnableGodotSourceGenerators>false</EnableGodotSourceGenerators>
-              </PropertyGroup>
+              <EnableGodotSourceGenerators>false</EnableGodotSourceGenerators>
+            </PropertyGroup>
 
-              <ItemGroup>
-                <PackageReference Include="coverlet.collector" Version="6.0.0" />
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-                <PackageReference Include="xunit" Version="2.5.3" />
-                <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
-                <PackageReference Include="GodotSharp" Version="4.6.2" />
-              </ItemGroup>
+            <ItemGroup>
+              <PackageReference Include="coverlet.collector" Version="6.0.0" />
+              <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+              <PackageReference Include="xunit" Version="2.5.3" />
+              <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+              <PackageReference Include="GodotSharp" Version="4.6.2" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <Using Include="Xunit" />
-              </ItemGroup>
+            <ItemGroup>
+              <Using Include="Xunit" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <ProjectReference Include="..\#{name}.csproj" />
-              </ItemGroup>
+            <ItemGroup>
+              <ProjectReference Include="..\#{name}.csproj" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <Content Include="..\**\*.*" />
-              </ItemGroup>
-            </Project>
-          '';
+            <ItemGroup>
+              <Content Include="..\**\*.*" />
+            </ItemGroup>
+          </Project>
+        '';
       }
       {
         path = ".rgignore";
@@ -182,30 +170,26 @@
       }
       {
         path = ".justfile";
-        contents =
-          /*
-          just
-          */
-          ''
-            default: build
+        contents = /* just */ ''
+          default: build
 
-            fmt:
-              @gdformat .
-              @dotnet format ./#{name}.csproj
+          fmt:
+            @gdformat .
+            @dotnet format ./#{name}.csproj
 
-            lint: fmt
-              @gdlint .
-              @dotnet build /warnaserror
+          lint: fmt
+            @gdlint .
+            @dotnet build /warnaserror
 
-            test: lint
-              @dotnet test
+          test: lint
+            @dotnet test
 
-            build: test
-              @dotnet build
+          build: test
+            @dotnet build
 
-            push: build
-              @git push
-          '';
+          push: build
+            @git push
+        '';
       }
       {
         path = "Assets/icon.svg";
@@ -311,7 +295,22 @@
         ];
       }
     ];
-    included_paths = ["Components" "Objects" "Scenes" "Globals" "Tests" "Lib"];
-    excluded_paths = ["Builds" ".godot" ".mono" "obj" "bin" "*.csproj" "*.sln"];
+    included_paths = [
+      "Components"
+      "Objects"
+      "Scenes"
+      "Globals"
+      "Tests"
+      "Lib"
+    ];
+    excluded_paths = [
+      "Builds"
+      ".godot"
+      ".mono"
+      "obj"
+      "bin"
+      "*.csproj"
+      "*.sln"
+    ];
   };
 }

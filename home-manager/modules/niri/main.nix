@@ -3,7 +3,8 @@
   lib,
   user,
   ...
-}: {
+}:
+{
   programs.niri = {
     enable = true;
 
@@ -43,25 +44,26 @@
     };
   };
 
-  home.file.".config/niri/main.kdl".text =
-    /*
-    kdl
-    */
-    ''
-      include "/home/${user}/.config/niri/config.kdl"
+  home.file.".config/niri/main.kdl".text = /* kdl */ ''
+    include "/home/${user}/.config/niri/config.kdl"
 
-      window-rule {
-        background-effect {
-          blur true
-          noise 0.05
-          saturation 1.0
-        }
-
-        border {
-          on
-        }
-
-        draw-border-with-background false
+    window-rule {
+      background-effect {
+        blur true
+        noise 0.05
+        saturation 1.0
       }
-    '';
+
+      border {
+        on
+      }
+
+      draw-border-with-background false
+    }
+
+    recent-windows {
+      binds {
+      }
+    }
+  '';
 }

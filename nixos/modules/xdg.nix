@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   xdg = {
     menus.enable = true;
     mime.enable = true;
@@ -14,18 +14,23 @@
 
       config = {
         common = {
-          default = ["gnome" "gtk"];
+          default = [
+            "gnome"
+            "gtk"
+          ];
         };
 
         niri = {
-          default = ["gnome" "gtk"];
-          "org.freedesktop.impl.portal.FileChooser" = ["kde"];
+          default = [
+            "gnome"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
         };
       };
     };
   };
 
   environment.etc."xdg/menus/applications.menu".text =
-    builtins.readFile
-    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 }

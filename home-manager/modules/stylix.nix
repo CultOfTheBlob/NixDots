@@ -2,7 +2,8 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   stylix = {
     enable = true;
 
@@ -36,10 +37,12 @@
       waybar.enable = false;
       yazi.enable = false;
       bat.enable = false;
-      noctalia-shell.enable = false;
+      noctalia.enable = false;
+      helix.enable = false;
 
-      floorp = {profileNames = [user];};
-      zen-browser = {profileNames = [user];};
+      zen-browser = {
+        profileNames = [ user ];
+      };
     };
   };
 }

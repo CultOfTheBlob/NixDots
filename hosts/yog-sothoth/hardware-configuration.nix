@@ -7,15 +7,23 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8d935b70-05fc-44e8-8b77-b1a8d86a29fb";
@@ -25,17 +33,25 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/EA61-973D";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/home/blob/Games" = {
     device = "/dev/disk/by-uuid/d5920336-a0f5-437f-a557-59321c8efc18";
     fsType = "ext4";
-    options = ["defaults" "nofail" "users" "exec"];
+    options = [
+      "defaults"
+      "nofail"
+      "users"
+      "exec"
+    ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/c8d22158-aa45-4ad2-aa85-0d16e7b87b25";}
+    { device = "/dev/disk/by-uuid/c8d22158-aa45-4ad2-aa85-0d16e7b87b25"; }
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

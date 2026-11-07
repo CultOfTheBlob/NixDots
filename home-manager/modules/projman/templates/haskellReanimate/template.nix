@@ -5,7 +5,7 @@
     dir_structure = [
       {
         name = "src";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
     ];
     files = [
@@ -15,63 +15,51 @@
       }
       {
         path = "#{name}.cabal";
-        contents =
-          /*
-          haskell
-          */
-          ''
-            name:               #{name}
-            version:            0.1.0.0
-            license:            #{license}
-            license-file:       LICENSE
-            build-type:         Simple
-            cabal-version:      >=1.10
-            extra-source-files: README.md
+        contents = /* haskell */ ''
+          name:               #{name}
+          version:            0.1.0.0
+          license:            #{license}
+          license-file:       LICENSE
+          build-type:         Simple
+          cabal-version:      >=1.10
+          extra-source-files: README.md
 
-            executable animate
-              hs-source-dirs:   src
-              main-is:          Main.hs
-              default-language: GHC2024
-              build-depends:
-                  base           >=4.7     && <5
-                , JuicyPixels
-                , linear
-                , reanimate      >=1.1.3.1
-                , reanimate-svg
-                , text
-          '';
+          executable animate
+            hs-source-dirs:   src
+            main-is:          Main.hs
+            default-language: GHC2024
+            build-depends:
+                base           >=4.7     && <5
+              , JuicyPixels
+              , linear
+              , reanimate      >=1.1.3.1
+              , reanimate-svg
+              , text
+        '';
       }
       {
         path = "stack.yaml";
-        contents =
-          /*
-          yaml
-          */
-          ''
-            resolver: lts-17.0
+        contents = /* yaml */ ''
+          resolver: lts-17.0
 
-            allow-newer: false
+          allow-newer: false
 
-            packages:
-            - .
+          packages:
+          - .
 
-            extra-deps: []
-          '';
+          extra-deps: []
+        '';
       }
       {
         path = "src/Main.hs";
-        contents =
-          /*
-          haskell
-          */
-          ''
-            module Main (main) where
+        contents = /* haskell */ ''
+          module Main (main) where
 
-            import Reanimate
+          import Reanimate
 
-            main :: IO ()
-            main = reanimate $ pause 1
-          '';
+          main :: IO ()
+          main = reanimate $ pause 1
+        '';
       }
       {
         path = ".rgignore";
@@ -96,22 +84,18 @@
       }
       {
         path = ".justfile";
-        contents =
-          /*
-          just
-          */
-          ''
-            default: view
+        contents = /* just */ ''
+          default: view
 
-            view:
-              @cabal run animate -- view
+          view:
+            @cabal run animate -- view
 
-            render:
-              @cabal run animate -- render
+          render:
+            @cabal run animate -- render
 
-            check:
-              @cabal run animate -- check
-          '';
+          check:
+            @cabal run animate -- check
+        '';
       }
     ];
     build = [
@@ -154,7 +138,7 @@
         ];
       }
     ];
-    included_paths = ["src"];
-    excluded_paths = [];
+    included_paths = [ "src" ];
+    excluded_paths = [ ];
   };
 }

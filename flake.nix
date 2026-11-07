@@ -35,7 +35,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -89,40 +89,58 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {nixpkgs, ...} @ inputs: let
-    pkgsStable = inputs.nixpkgs-stable.legacyPackages.${system};
-    system = "x86_64-linux";
-    user = "blob";
-    hosts = ["yog-sothoth"];
-    host = builtins.elemAt hosts 0;
-  in {
-    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs user host pkgsStable;};
-      modules = [
-        (inputs.import-tree ./nixos)
-        (inputs.import-tree ./home-manager/colors)
-        ./hosts/${host}/hardware-configuration.nix
-        inputs.stylix.nixosModules.stylix
-        inputs.niri.nixosModules.niri
-        inputs.nix-index-database.nixosModules.default
-        {programs.nix-index-database.comma.enable = true;}
-      ];
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      pkgsStable = inputs.nixpkgs-stable.legacyPackages.${system};
+      system = "x86_64-linux";
+      user = "blob";
+      hosts = [ "yog-sothoth" ];
+      host = builtins.elemAt hosts 0;
+    in
+    {
+      nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit
+            inputs
+            user
+            host
+            pkgsStable
+            ;
+        };
+        modules = [
+          (inputs.import-tree ./nixos)
+          (inputs.import-tree ./home-manager/colors)
+          ./hosts/${host}/hardware-configuration.nix
+          inputs.stylix.nixosModules.stylix
+          inputs.niri.nixosModules.niri
+          inputs.nix-index-database.nixosModules.default
+          { programs.nix-index-database.comma.enable = true; }
+        ];
+      };
+      homeConfigurations.${user} = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit
+            inputs
+            user
+            host
+            system
+            pkgsStable
+            ;
+        };
+        modules = [
+          (inputs.import-tree ./home-manager)
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.projman.homeManagerModules.default
+          inputs.niri.homeModules.niri
+          inputs.noctalia.homeModules.default
+          inputs.stylix.homeModules.stylix
+          inputs.nvf.homeManagerModules.default
+          inputs.nixcord.homeModules.nixcord
+          inputs.spicetify-nix.homeManagerModules.default
+          inputs.zen-browser.homeModules.default
+        ];
+      };
     };
-    homeConfigurations.${user} = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {inherit inputs user system pkgsStable;};
-      modules = [
-        (inputs.import-tree ./home-manager)
-        inputs.sops-nix.homeManagerModules.sops
-        inputs.projman.homeManagerModules.default
-        inputs.niri.homeModules.niri
-        inputs.noctalia.homeModules.default
-        inputs.stylix.homeModules.stylix
-        inputs.nvf.homeManagerModules.default
-        inputs.nixcord.homeModules.nixcord
-        inputs.spicetify-nix.homeManagerModules.default
-        inputs.zen-browser.homeModules.default
-      ];
-    };
-  };
 }

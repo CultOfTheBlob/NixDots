@@ -3,7 +3,8 @@
   inputs,
   system,
   ...
-}: let
+}:
+let
   drift = pkgs.buildGoModule {
     pname = "drift";
     version = "0.1.0";
@@ -11,11 +12,28 @@
       owner = "phlx0";
       repo = "drift";
       rev = "main";
-      sha256 = "sha256-hkbgxwUgKB/mWQRnn/BJVHV+JyY+rPRTtTl9VpHm4V0=";
+      sha256 = "sha256-vzKGMW7a7LtitJfBospDQJz7Lbh+qDuULOfkQrL4/KQ=";
     };
-    vendorHash = "sha256-FsNa9qp2MnPk1onv/O13mFi+82yP7D4LdILZsNzHs+4=";
+    vendorHash = "sha256-xcSoDytK7cQrECa5PVoLunCG5im2YbOd8/0bclvTaq0=";
   };
-in {
+
+  davinci-resolve-wrapper = pkgs.writeShellScript "resolve-wrapper" ''
+    export QT_QPA_PLATFORM=xcb
+
+    exec ${pkgs.davinci-resolve}/bin/davinci-resolve "$@"
+  '';
+
+  davinci-resolve = pkgs.symlinkJoin {
+    name = "davinci-resolve-fixed";
+    paths = [ pkgs.davinci-resolve ];
+
+    postBuild = ''
+      rm $out/bin/davinci-resolve
+      ln -s ${davinci-resolve-wrapper} $out/bin/davinci-resolve
+    '';
+  };
+in
+{
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -32,6 +50,7 @@ in {
     cava
     speedtest-rs
     drift
+    bluetui
 
     # Command line utils
     linuxHeaders
@@ -64,6 +83,9 @@ in {
     qalculate-gtk
     keymapp
     prismlauncher
+    libreoffice
+    foliate
+    davinci-resolve
 
     # Utils
     inputs.quickshell.packages.${system}.default

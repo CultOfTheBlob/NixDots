@@ -3,7 +3,8 @@
   inputs,
   system,
   ...
-}: {
+}:
+{
   programs.nvf.settings.vim = {
     ui = {
       noice = {
@@ -33,16 +34,12 @@
         enable = true;
       };
 
-      breadcrumbs.navbuddy = {
-        enable = true;
-      };
-
       nvim-ufo = {
         enable = true;
 
         setupOpts = {
           close_fold_kinds_for_ft = {
-            default = ["comment"];
+            default = [ "comment" ];
           };
         };
       };
@@ -126,7 +123,11 @@
           };
         };
 
-        event = ["BufReadPost" "BufNewFile" "BufWritePre"];
+        event = [
+          "BufReadPost"
+          "BufNewFile"
+          "BufWritePre"
+        ];
       };
 
       "outline.nvim" = {

@@ -1,8 +1,8 @@
-{lib, ...}: {
+{ lib, ... }: {
   xdg.configFile.dolphin = {
     target = "dolphinrc";
 
-    text = lib.generators.toINIWithGlobalSection {} {
+    text = lib.generators.toINIWithGlobalSection { } {
       globalSection = {
         MenuBar = "Disabled";
       };

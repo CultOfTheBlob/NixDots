@@ -3,7 +3,7 @@
     luasnip = {
       enable = true;
 
-      providers = ["friendly-snippets"];
+      providers = [ "friendly-snippets" ];
 
       setupOpts = {
         enable_autosnippets = true;

@@ -2,9 +2,11 @@
   pkgs,
   user,
   ...
-}: let
+}:
+let
   assets = "/home/${user}/.nix/home-manager/modules/assets";
-in {
+in
+{
   home.packages = [
     (pkgs.writeShellScriptBin "mediaControl" ''
       # Playerctl

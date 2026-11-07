@@ -1,14 +1,19 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   users = {
     groups = {
-      plugdev = {};
+      plugdev = { };
     };
 
     defaultUserShell = pkgs.nushell;
     users.blob = {
       isNormalUser = true;
       description = "Thomas";
-      extraGroups = ["networkmanager" "wheel" "storage" "plugdev"];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "storage"
+        "plugdev"
+      ];
     };
   };
 }

@@ -8,7 +8,7 @@
         sub_dirs = [
           {
             name = "workflows";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
@@ -17,58 +17,54 @@
         sub_dirs = [
           {
             name = "utils";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
       {
         name = "tests";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
     ];
     files = [
       {
         path = ".github/workflows/ci.yml";
-        contents =
-          /*
-          yaml
-          */
-          ''
+        contents = /* yaml */ ''
 
-            name: CI
+          name: CI
 
-            on:
-              push:
-                branches: [ main ]
-              pull_request:
-                branches: [ main ]
+          on:
+            push:
+              branches: [ main ]
+            pull_request:
+              branches: [ main ]
 
-            jobs:
-              build:
-                runs-on: ubuntu-latest
+          jobs:
+            build:
+              runs-on: ubuntu-latest
 
-                steps:
-                  - name: Checkout Code
-                    uses: actions/checkout@v4
+              steps:
+                - name: Checkout Code
+                  uses: actions/checkout@v4
 
-                  - name: Install Nix
-                    uses: DeterminateSystems/nix-installer-action@v14
+                - name: Install Nix
+                  uses: DeterminateSystems/nix-installer-action@v14
 
-                  - name: Setup Cache
-                    uses: DeterminateSystems/magic-nix-cache-action@v9
+                - name: Setup Cache
+                  uses: DeterminateSystems/magic-nix-cache-action@v9
 
-                  - name: Check Formatting
-                    run: nix develop --command cargo fmt --check
+                - name: Check Formatting
+                  run: nix develop --command cargo fmt --check
 
-                  - name: Lint
-                    run: nix develop --command cargo clippy -- -D warnings
+                - name: Lint
+                  run: nix develop --command cargo clippy -- -D warnings
 
-                  - name: Test
-                    run: nix develop --command cargo test
+                - name: Test
+                  run: nix develop --command cargo test
 
-                  - name: Build
-                    run: nix build
-          '';
+                - name: Build
+                  run: nix build
+        '';
       }
       {
         path = "flake.nix";
@@ -80,58 +76,42 @@
       }
       {
         path = "src/main.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            //!---
+        contents = /* rust */ ''
+          //!---
 
-            use crate::prelude::*;
+          use crate::prelude::*;
 
-            mod error;
-            mod prelude;
-            mod utils;
+          mod error;
+          mod prelude;
+          mod utils;
 
-            #[expect(clippy::unnecessary_wraps)]
-            fn main() -> Result<()> {
-                Ok(())
-            }
-          '';
+          #[expect(clippy::unnecessary_wraps)]
+          fn main() -> Result<()> {
+              Ok(())
+          }
+        '';
       }
       {
         path = "src/error.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[derive(thiserror::Error, Debug)]
-            pub enum Error {}
-          '';
+        contents = /* rust */ ''
+          #[derive(thiserror::Error, Debug)]
+          pub enum Error {}
+        '';
       }
       {
         path = "src/prelude.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            pub use crate::error::Error;
+        contents = /* rust */ ''
+          pub use crate::error::Error;
 
-            pub type Result<T> = core::result::Result<T, Error>;
-          '';
+          pub type Result<T> = core::result::Result<T, Error>;
+        '';
       }
       {
         path = "src/utils/mod.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[expect(unused_imports)]
-            use crate::prelude::*;
-          '';
+        contents = /* rust */ ''
+          #[expect(unused_imports)]
+          use crate::prelude::*;
+        '';
       }
       {
         path = ".rgignore";
@@ -163,28 +143,24 @@
       }
       {
         path = ".justfile";
-        contents =
-          /*
-          just
-          */
-          ''
-            default: run
+        contents = /* just */ ''
+          default: run
 
-            run:
-              @cargo run
+          run:
+            @cargo run
 
-            fmt:
-              @cargo fmt
+          fmt:
+            @cargo fmt
 
-            lint: fmt
-              @cargo clippy -- -D warnings
+          lint: fmt
+            @cargo clippy -- -D warnings
 
-            test: lint
-              @cargo test
+          test: lint
+            @cargo test
 
-            build: test
-              @nix build
-          '';
+          build: test
+            @nix build
+        '';
       }
     ];
     build = [
@@ -236,7 +212,10 @@
         ];
       }
     ];
-    included_paths = ["src" "tests"];
-    excluded_paths = ["target"];
+    included_paths = [
+      "src"
+      "tests"
+    ];
+    excluded_paths = [ "target" ];
   };
 }

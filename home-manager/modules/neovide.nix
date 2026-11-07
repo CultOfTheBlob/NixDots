@@ -4,7 +4,7 @@
 
     settings = {
       font = {
-        normal = ["FiraCode Nerd Font"];
+        normal = [ "FiraCode Nerd Font" ];
         size = 12;
       };
 

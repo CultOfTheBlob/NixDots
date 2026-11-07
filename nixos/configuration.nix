@@ -2,7 +2,8 @@
   pkgs,
   host,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     home-manager
   ];

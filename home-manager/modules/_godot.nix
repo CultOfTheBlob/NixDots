@@ -3,17 +3,28 @@
   config,
   user,
   ...
-}: let
-  formatColor = color:
-    builtins.readFile (pkgs.runCommand "color" {
-        nativeBuildInputs = [pkgs.pastel pkgs.gnused pkgs.coreutils];
-      } ''
-        pastel format rgb-float "${color}" \
-          | sed -E 's/^rgb\((.*)\)$/Color(\1, 1)/' \
-          | tr -d '\n' \
-          > "$out"
-      '');
-in {
+}:
+let
+  formatColor =
+    color:
+    builtins.readFile (
+      pkgs.runCommand "color"
+        {
+          nativeBuildInputs = [
+            pkgs.pastel
+            pkgs.gnused
+            pkgs.coreutils
+          ];
+        }
+        ''
+          pastel format rgb-float "${color}" \
+            | sed -E 's/^rgb\((.*)\)$/Color(\1, 1)/' \
+            | tr -d '\n' \
+            > "$out"
+        ''
+    );
+in
+{
   xdg.configFile = {
     godot-settings = {
       target = "godot/editor_settings-4.6.tres";

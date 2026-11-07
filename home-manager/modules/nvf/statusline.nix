@@ -3,147 +3,156 @@
     lualine = {
       enable = true;
 
-      componentSeparator = {
-        left = "";
-        right = "";
+      integrations = {
+        breadcrumbs.navbuddy = {
+          enable = true;
+        };
       };
 
-      sectionSeparator = {
-        left = "";
-        right = "";
-      };
+      setupOpts = {
+        options = {
+          component_separator = {
+            left = "";
+            right = "";
+          };
 
-      globalStatus = false;
+          section_separator = {
+            left = "";
+            right = "";
+          };
 
-      activeSection = {
-        a = [
-          ''
-            {
-              "mode",
-              icons_enabled = true,
-              separator = {
-                left = "",
-                right = "",
-              },
-              right_padding = 2,
-            }
-          ''
-        ];
+          globalstatus = false;
+        };
 
-        b = [
-          ''
-            {
-              "filename",
-              icons_enabled = true,
-              separator = {
-                right = "",
-              },
-            }
-          ''
-          ''
-            {
-              "branch",
-              icons_enabled = true,
-              separator = {
-                right = "",
-              },
-            }
-          ''
-          ''
-            {
-              "diff",
-              icons_enabled = true,
-              separator = {
-                right = "",
-              },
-            }
-          ''
-        ];
+        sections = {
+          lualine_a = [
+            ''
+              {
+                "mode",
+                icons_enabled = true,
+                separator = {
+                  left = "",
+                  right = "",
+                },
+                right_padding = 2,
+              }
+            ''
+          ];
 
-        c = [
-          ''
-            {
-              "%=",
-              icons_enabled = true,
-            }
-          ''
-          ''
-            {
-              "lsp_status",
-              icons_enabled = true,
-            }
-          ''
-          ''
-            {
-              "diagnostic",
-              icons_enabled = true,
-            }
-          ''
-        ];
+          lualine_b = [
+            ''
+              {
+                "filename",
+                icons_enabled = true,
+                separator = {
+                  right = "",
+                },
+              }
+            ''
+            ''
+              {
+                "branch",
+                icons_enabled = true,
+                separator = {
+                  right = "",
+                },
+              }
+            ''
+            ''
+              {
+                "diff",
+                icons_enabled = true,
+                separator = {
+                  right = "",
+                },
+              }
+            ''
+          ];
 
-        x = [
-        ];
+          lualine_c = [
+            ''
+              {
+                "%=",
+                icons_enabled = true,
+              }
+            ''
+            ''
+              {
+                "lsp_status",
+                icons_enabled = true,
+              }
+            ''
+            ''
+              {
+                "diagnostic",
+                icons_enabled = true,
+              }
+            ''
+          ];
 
-        y = [
-          ''
-            {
-              "filetype",
-              icons_enabled = true,
-              separator = {
-                left = "",
-              },
-            }
-          ''
-          ''
-            {
-              "filesize",
-              icons_enabled = true,
-              separator = {
-                left = "",
-              },
-            }
-          ''
-        ];
+          lualine_x = [ ];
 
-        z = [
-          ''
-            {
-              "location",
-              icons_enabled = true,
-              separator = {
-                left = "",
-                right = "",
-              },
-              right_padding = 2,
-            }
-          ''
-        ];
-      };
+          lualine_y = [
+            ''
+              {
+                "filetype",
+                icons_enabled = true,
+                separator = {
+                  left = "",
+                },
+              }
+            ''
+            ''
+              {
+                "filesize",
+                icons_enabled = true,
+                separator = {
+                  left = "",
+                },
+              }
+            ''
+          ];
 
-      inactiveSection = {
-        a = [
-          ''
-            { "filename" }
-          ''
-        ];
+          lualine_z = [
+            ''
+              {
+                "location",
+                icons_enabled = true,
+                separator = {
+                  left = "",
+                  right = "",
+                },
+                right_padding = 2,
+              }
+            ''
+          ];
+        };
 
-        b = [
-        ];
+        inactive_section = {
+          lualine_a = [
+            ''
+              { "filename" }
+            ''
+          ];
 
-        c = [
-        ];
+          lualine_b = [
+          ];
 
-        x = [
-        ];
+          lualine_c = [
+          ];
 
-        y = [
-        ];
+          lualine_x = [
+          ];
 
-        z = [
-          ''
-            { "location" }
-          ''
-        ];
+          lualine_y = [
+          ];
+
+          lualine_z = [
+            ''
+              { "location" }
+            ''
+          ];
+        };
       };
     };
   };

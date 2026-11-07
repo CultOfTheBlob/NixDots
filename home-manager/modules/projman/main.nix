@@ -1,4 +1,4 @@
-{user, ...}: {
+{ user, ... }: {
   programs.projman = {
     enable = true;
 

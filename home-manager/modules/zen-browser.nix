@@ -3,7 +3,8 @@
   system,
   user,
   ...
-}: {
+}:
+{
   programs.zen-browser = {
     enable = true;
 
@@ -34,13 +35,13 @@
           settings = [
             {
               name = "monkeytype";
-              tags = ["monkeytype"];
+              tags = [ "monkeytype" ];
               keyword = "type";
               url = "https://monkeytype.com";
             }
             {
               name = "noogle";
-              tags = ["nix"];
+              tags = [ "nix" ];
               keyword = "noogle";
               url = "https://noogle.dev";
             }
@@ -74,14 +75,28 @@
                 translations = "blocked";
               };
             };
-            ctrlTab = {sortByRecentlyUsed = true;};
-            ml = {chat = {enabled = false;};};
+            ctrlTab = {
+              sortByRecentlyUsed = true;
+            };
+            ml = {
+              chat = {
+                enabled = false;
+              };
+            };
             startup = {
-              couldRestoreSession = {count = 2;};
+              couldRestoreSession = {
+                count = 2;
+              };
               page = 3;
             };
-            tabs = {allow_transparent_browser = false;};
-            toolbars = {bookmarks = {visibility = "never";};};
+            tabs = {
+              allow_transparent_browser = false;
+            };
+            toolbars = {
+              bookmarks = {
+                visibility = "never";
+              };
+            };
           };
         };
       };

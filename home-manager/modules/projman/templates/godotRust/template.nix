@@ -8,32 +8,32 @@
         sub_dirs = [
           {
             name = "workflows";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
       {
         name = "assets";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "src";
         sub_dirs = [
           {
             name = "utils";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
           {
             name = "components";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
           {
             name = "objects";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
           {
             name = "scenes";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
@@ -42,62 +42,58 @@
         sub_dirs = [
           {
             name = "debug";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
       {
         name = "tests";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
       {
         name = "bin";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
     ];
     files = [
       {
         path = ".github/workflows/ci.yml";
-        contents =
-          /*
-          yaml
-          */
-          ''
+        contents = /* yaml */ ''
 
-            name: CI
+          name: CI
 
-            on:
-              push:
-                branches: [ main ]
-              pull_request:
-                branches: [ main ]
+          on:
+            push:
+              branches: [ main ]
+            pull_request:
+              branches: [ main ]
 
-            jobs:
-              build:
-                runs-on: ubuntu-latest
+          jobs:
+            build:
+              runs-on: ubuntu-latest
 
-                steps:
-                  - name: Checkout Code
-                    uses: actions/checkout@v4
+              steps:
+                - name: Checkout Code
+                  uses: actions/checkout@v4
 
-                  - name: Install Nix
-                    uses: DeterminateSystems/nix-installer-action@v14
+                - name: Install Nix
+                  uses: DeterminateSystems/nix-installer-action@v14
 
-                  - name: Setup Cache
-                    uses: DeterminateSystems/magic-nix-cache-action@v9
+                - name: Setup Cache
+                  uses: DeterminateSystems/magic-nix-cache-action@v9
 
-                  - name: Check Formatting
-                    run: nix develop --command cargo fmt --check
+                - name: Check Formatting
+                  run: nix develop --command cargo fmt --check
 
-                  - name: Lint
-                    run: nix develop --command cargo clippy -- -D warnings
+                - name: Lint
+                  run: nix develop --command cargo clippy -- -D warnings
 
-                  - name: Test
-                    run: nix develop --command cargo test
+                - name: Test
+                  run: nix develop --command cargo test
 
-                  - name: Build
-                    run: nix build
-          '';
+                - name: Build
+                  run: nix build
+        '';
       }
       {
         path = "flake.nix";
@@ -109,144 +105,108 @@
       }
       {
         path = "src/lib.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            //! `GDExtension` module.
+        contents = /* rust */ ''
+          //! `GDExtension` module.
 
-            use godot::prelude::*;
+          use godot::prelude::*;
 
-            mod error;
-            mod prelude;
-            mod utils;
+          mod error;
+          mod prelude;
+          mod utils;
 
-            struct GDExtension;
+          struct GDExtension;
 
-            ///SAFETY: This is a zero sized marker struct and thus always safe.
-            #[gdextension]
-            unsafe impl ExtensionLibrary for GDExtension {}
-          '';
+          ///SAFETY: This is a zero sized marker struct and thus always safe.
+          #[gdextension]
+          unsafe impl ExtensionLibrary for GDExtension {}
+        '';
       }
       {
         path = "src/error.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[derive(thiserror::Error, Debug)]
-            pub enum Error {}
-          '';
+        contents = /* rust */ ''
+          #[derive(thiserror::Error, Debug)]
+          pub enum Error {}
+        '';
       }
       {
         path = "src/prelude.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            pub use crate::error::Error;
+        contents = /* rust */ ''
+          pub use crate::error::Error;
 
-            #[expect(unused)]
-            pub type Result<T> = core::result::Result<T, Error>;
-          '';
+          #[expect(unused)]
+          pub type Result<T> = core::result::Result<T, Error>;
+        '';
       }
       {
         path = "src/utils/mod.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[expect(unused_imports)]
-            use crate::prelude::*;
-          '';
+        contents = /* rust */ ''
+          #[expect(unused_imports)]
+          use crate::prelude::*;
+        '';
       }
       {
         path = "src/components/mod.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[expect(unused_imports)]
-            use crate::prelude::*;
-          '';
+        contents = /* rust */ ''
+          #[expect(unused_imports)]
+          use crate::prelude::*;
+        '';
       }
       {
         path = "src/objects/mod.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[expect(unused_imports)]
-            use crate::prelude::*;
-          '';
+        contents = /* rust */ ''
+          #[expect(unused_imports)]
+          use crate::prelude::*;
+        '';
       }
       {
         path = "src/scenes/mod.rs";
-        contents =
-          /*
-          rust
-          */
-          ''
-            #[expect(unused_imports)]
-            use crate::prelude::*;
-          '';
+        contents = /* rust */ ''
+          #[expect(unused_imports)]
+          use crate::prelude::*;
+        '';
       }
       {
         path = "project.godot";
-        contents =
-          /*
-          toml
-          */
-          ''
-            config_version=5
+        contents = /* toml */ ''
+          config_version=5
 
-            [application]
-              config/name="#{name}"
-              config/features=PackedStringArray("4.6", "Forward Plus")
+          [application]
+            config/name="#{name}"
+            config/features=PackedStringArray("4.6", "Forward Plus")
 
-            [dotnet]
-              project/assembly_name="#{name}"
+          [dotnet]
+            project/assembly_name="#{name}"
 
 
-            [file_customization]
+          [file_customization]
 
-            folder_colors={
-            "res://assets/": "yellow",
-              "res://bin/": "gray",
-              "res://src/": "purple",
-              "res://src/components/": "blue",
-              "res://src/objects/": "teal",
-              "res://src/scenes/": "red",
-              "res://src/utils/": "orange",
-              "res://tests/": "green"
-            }
-          '';
+          folder_colors={
+          "res://assets/": "yellow",
+            "res://bin/": "gray",
+            "res://src/": "purple",
+            "res://src/components/": "blue",
+            "res://src/objects/": "teal",
+            "res://src/scenes/": "red",
+            "res://src/utils/": "orange",
+            "res://tests/": "green"
+          }
+        '';
       }
       {
         path = "#{name}.gdextension";
-        contents =
-          /*
-          toml
-          */
-          ''
-            [configuration]
-            entry_symbol = "gdext_rust_init"
-            compatibility_minimum = 4.6
-            reloadable = true
+        contents = /* toml */ ''
+          [configuration]
+          entry_symbol = "gdext_rust_init"
+          compatibility_minimum = 4.6
+          reloadable = true
 
-            [libraries]
-            linux.debug.x86_64 =     "res://target/debug/lib#{name}.so"
-            linux.release.x86_64 =   "res://target/release/lib#{name}.so"
-            windows.release.x86_64 = "res://target/release/#{name}.dll"
-            macos.release =          "res://target/release/lib#{name}.dylib"
-            macos.release.arm64 =    "res://target/release/lib#{name}.dylib"
-          '';
+          [libraries]
+          linux.debug.x86_64 =     "res://target/debug/lib#{name}.so"
+          linux.release.x86_64 =   "res://target/release/lib#{name}.so"
+          windows.release.x86_64 = "res://target/release/#{name}.dll"
+          macos.release =          "res://target/release/lib#{name}.dylib"
+          macos.release.arm64 =    "res://target/release/lib#{name}.dylib"
+        '';
       }
       {
         path = "target/.gdignore";
@@ -295,28 +255,24 @@
       }
       {
         path = ".justfile";
-        contents =
-          /*
-          just
-          */
-          ''
-            default:
-              @cargo build
+        contents = /* just */ ''
+          default:
+            @cargo build
 
-            fmt:
-              @gdformat .
-              @cargo fmt
+          fmt:
+            @gdformat .
+            @cargo fmt
 
-            lint: fmt
-              @gdlint .
-              @cargo clippy -- -D warnings
+          lint: fmt
+            @gdlint .
+            @cargo clippy -- -D warnings
 
-            test: lint
-              @cargo test
+          test: lint
+            @cargo test
 
-            build: test
-              @cargo build
-          '';
+          build: test
+            @cargo build
+        '';
       }
       {
         path = "assets/godot_icon.svg";
@@ -375,7 +331,14 @@
         ];
       }
     ];
-    included_paths = ["src" "tests"];
-    excluded_paths = ["bin" ".godot" "target"];
+    included_paths = [
+      "src"
+      "tests"
+    ];
+    excluded_paths = [
+      "bin"
+      ".godot"
+      "target"
+    ];
   };
 }

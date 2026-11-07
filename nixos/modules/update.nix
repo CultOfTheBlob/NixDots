@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   system.autoUpgrade = {
     enable = false;
     flake = inputs.self.outPath;

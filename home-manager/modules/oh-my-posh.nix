@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   programs.oh-my-posh = {
     enable = true;
 
@@ -35,7 +35,9 @@
               background = "p:main-bg";
               foreground = "p:terminal-green";
               leading_diamond = "";
-              properties = {style = "folder";};
+              properties = {
+                style = "folder";
+              };
               style = "diamond";
               template = " {{ .Path }}";
               trailing_diamond = "";
@@ -45,7 +47,9 @@
               background = "p:main-bg";
               foreground = "p:terminal-blue";
               leading_diamond = " ";
-              properties = {branch_icon = "";};
+              properties = {
+                branch_icon = "";
+              };
               style = "diamond";
               template = "{{ .HEAD }}";
               trailing_diamond = "";
@@ -55,7 +59,9 @@
               background = "p:main-bg";
               foreground = "p:pistachio-green";
               leading_diamond = " ";
-              properties = {fetch_version = false;};
+              properties = {
+                fetch_version = false;
+              };
               style = "diamond";
               template = "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}";
               trailing_diamond = "";
@@ -65,7 +71,9 @@
               background = "p:main-bg";
               foreground = "p:light-sky-blue";
               leading_diamond = " ";
-              properties = {fetch_version = false;};
+              properties = {
+                fetch_version = false;
+              };
               style = "diamond";
               template = "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
               trailing_diamond = "";
@@ -75,7 +83,9 @@
               background = "p:main-bg";
               foreground = "p:terminal-red";
               leading_diamond = " ";
-              properties = {fetch_version = false;};
+              properties = {
+                fetch_version = false;
+              };
               style = "diamond";
               template = "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
               trailing_diamond = "";

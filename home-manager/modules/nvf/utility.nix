@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.nvf.settings.vim = {
     utility = {
       ccc = {
@@ -24,26 +24,22 @@
       "dial.nvim" = {
         package = pkgs.vimPlugins.dial-nvim;
 
-        after =
-          /*
-          lua
-          */
-          ''
-            local augend = require("dial.augend")
-            require("dial.config").augends:register_group {
-              default = {
-                augend.integer.alias.decimal,
-                augend.integer.alias.hex,
-                augend.date.alias["%Y/%m/%d"],
-                augend.constant.alias.bool,
-                augend.constant.new{
-                  elements = {"&&", "||"},
-                  word = false,
-                  cyclic = true,
-                },
+        after = /* lua */ ''
+          local augend = require("dial.augend")
+          require("dial.config").augends:register_group {
+            default = {
+              augend.integer.alias.decimal,
+              augend.integer.alias.hex,
+              augend.date.alias["%Y/%m/%d"],
+              augend.constant.alias.bool,
+              augend.constant.new{
+                elements = {"&&", "||"},
+                word = false,
+                cyclic = true,
               },
-            }
-          '';
+            },
+          }
+        '';
 
         keys = [
           {

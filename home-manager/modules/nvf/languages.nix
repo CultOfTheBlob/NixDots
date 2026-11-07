@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.nvf.settings.vim.languages = {
     enableTreesitter = true;
     enableDAP = true;
@@ -9,13 +9,13 @@
       enable = true;
 
       format = {
-        type = ["alejandra"];
+        type = [ "alejandra" ];
       };
 
       lsp = {
         enable = true;
 
-        servers = ["nixd"];
+        servers = [ "nixd" ];
       };
     };
 
@@ -25,7 +25,7 @@
       lsp = {
         enable = true;
 
-        servers = ["roslyn-ls"];
+        servers = [ "roslyn-ls" ];
       };
     };
 
@@ -41,13 +41,13 @@
       format = {
         enable = true;
 
-        type = ["prettierd"];
+        type = [ "prettier" ];
       };
 
       lsp = {
         enable = true;
 
-        servers = ["marksman"];
+        servers = [ "marksman" ];
       };
     };
 
@@ -57,7 +57,7 @@
       lsp = {
         enable = true;
 
-        servers = ["pyright"];
+        servers = [ "pyright" ];
       };
     };
 
@@ -69,7 +69,7 @@
       lsp = {
         enable = true;
 
-        servers = ["clangd"];
+        servers = [ "clangd" ];
       };
     };
 
@@ -79,19 +79,21 @@
       lsp = {
         enable = true;
 
-        package = pkgs.rust-analyzer;
+        servers = [ "rust-analyzer" ];
       };
     };
 
     lua = {
       enable = true;
 
+      extensions = {
+        lazydev.enable = true;
+      };
+
       lsp = {
         enable = true;
 
-        lazydev.enable = true;
-
-        servers = ["lua-language-server"];
+        servers = [ "lua-language-server" ];
       };
     };
 
@@ -101,7 +103,7 @@
       lsp = {
         enable = false;
 
-        servers = [];
+        servers = [ ];
       };
 
       dap.enable = false;
@@ -113,7 +115,7 @@
       lsp = {
         enable = true;
 
-        servers = ["ols"];
+        servers = [ "ols" ];
       };
     };
 
@@ -123,7 +125,7 @@
       lsp = {
         enable = true;
 
-        servers = ["glsl_analyzer"];
+        servers = [ "glsl_analyzer" ];
       };
     };
   };

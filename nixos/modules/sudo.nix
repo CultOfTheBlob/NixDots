@@ -1,12 +1,12 @@
-{user, ...}: {
+{ user, ... }: {
   security.sudo = {
     extraRules = [
       {
-        users = [user];
+        users = [ user ];
         commands = [
           {
             command = "ALL";
-            options = ["NOPASSWD"];
+            options = [ "NOPASSWD" ];
           }
         ];
       }

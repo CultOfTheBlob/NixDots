@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   qt = {
     enable = true;
 
@@ -14,7 +14,7 @@
   xdg.configFile = {
     kdeglobals = {
       target = "kdeglobals";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         Icons.Theme = "Nordzy-dark";
 
         General = {
@@ -55,14 +55,14 @@
 
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         General.theme = "Nordic-bluish";
       };
     };
 
     qt5ct = {
       target = "qt5ct/qt5ct.conf";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         Appearance = {
           icon_theme = "Nordzy-dark";
         };
@@ -71,7 +71,7 @@
 
     qt6ct = {
       target = "qt6ct/qt6ct.conf";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         Appearance = {
           icon_theme = "Nordzy-dark";
         };

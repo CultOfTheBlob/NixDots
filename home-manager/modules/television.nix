@@ -32,7 +32,7 @@
         metadata = {
           name = "projects";
           description = "Browse and preview projects";
-          requirements = ["nu"];
+          requirements = [ "nu" ];
         };
 
         source = {
@@ -66,7 +66,10 @@
         metadata = {
           name = "dotfiles";
           description = "Browse and edit dotfiles";
-          requirements = ["fd" "bat"];
+          requirements = [
+            "fd"
+            "bat"
+          ];
         };
 
         source = {
@@ -94,11 +97,17 @@
         metadata = {
           name = "files";
           description = "Browse files and directories";
-          requirements = ["fd" "bat"];
+          requirements = [
+            "fd"
+            "bat"
+          ];
         };
 
         source = {
-          command = ["fd -t f" "fd -t f -H"];
+          command = [
+            "fd -t f"
+            "fd -t f -H"
+          ];
         };
 
         preview = {
@@ -122,7 +131,10 @@
         metadata = {
           name = "history";
           description = "Browse command history";
-          requirements = ["nu" "wl-copy"];
+          requirements = [
+            "nu"
+            "wl-copy"
+          ];
         };
 
         source = {

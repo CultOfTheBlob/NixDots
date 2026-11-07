@@ -4,7 +4,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     kdePackages.qtmultimedia
     graphite-cursors
@@ -13,7 +14,7 @@
 
   environment.etc = {
     "xdg/weston/weston.ini".text =
-      lib.generators.toINI {} {
+      lib.generators.toINI { } {
         keyboard = {
           keymap_layout = "us";
           keymap_model = "pc104";
@@ -26,13 +27,13 @@
           left-handed = false;
         };
       }
-      + lib.generators.toINI {} {
+      + lib.generators.toINI { } {
         output = {
           name = "DP-1";
           mode = "3440x1440";
         };
       }
-      + lib.generators.toINI {} {
+      + lib.generators.toINI { } {
         output = {
           name = "DP-2";
           mode = "off";
@@ -42,7 +43,7 @@
     "sddm/wallpaper.png".source = ./assets/loginWallpaper.png;
   };
 
-  imports = [inputs.silentSDDM.nixosModules.default];
+  imports = [ inputs.silentSDDM.nixosModules.default ];
   programs.silentSDDM = {
     enable = true;
     theme = "default-right";

@@ -91,22 +91,34 @@
 
       {
         key = "<up>";
-        mode = ["n" "i"];
+        mode = [
+          "n"
+          "i"
+        ];
         action = "<nop>";
       }
       {
         key = "<down>";
-        mode = ["n" "i"];
+        mode = [
+          "n"
+          "i"
+        ];
         action = "<nop>";
       }
       {
         key = "<left>";
-        mode = ["n" "i"];
+        mode = [
+          "n"
+          "i"
+        ];
         action = "<nop>";
       }
       {
         key = "<right>";
-        mode = ["n" "i"];
+        mode = [
+          "n"
+          "i"
+        ];
         action = "<nop>";
       }
     ];

@@ -2,15 +2,17 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (inputs.nvf.lib.nvim.dag) entryAnywhere;
   qml-ls = inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in {
+in
+{
   programs.nvf = {
     enable = true;
 
     settings.vim = {
-      extraPackages = [qml-ls];
+      extraPackages = [ qml-ls ];
 
       theme = {
         enable = true;
@@ -42,8 +44,8 @@ in {
           desc = "Change tab width to 4 in c# file.";
 
           command = "setlocal tabstop=4 shiftwidth=4";
-          event = ["FileType"];
-          pattern = ["cs"];
+          event = [ "FileType" ];
+          pattern = [ "cs" ];
         }
 
         {
@@ -52,8 +54,8 @@ in {
           desc = "Setup comments for gdshader.";
 
           command = "set commentstring=//%s";
-          event = ["FileType"];
-          pattern = ["gdshader"];
+          event = [ "FileType" ];
+          pattern = [ "gdshader" ];
         }
       ];
 
@@ -65,18 +67,14 @@ in {
       };
 
       luaConfigRC = {
-        lazydev =
-          /*
-          lua
-          */
-          ''
-            local lsp = require("lazydev.lsp")
-            local orig = lsp.supports
-            lsp.supports = function(client)
-              if client and client.name == "lua-language-server" then return true end
-              return orig(client)
-            end
-          '';
+        lazydev = /* lua */ ''
+          local lsp = require("lazydev.lsp")
+          local orig = lsp.supports
+          lsp.supports = function(client)
+            if client and client.name == "lua-language-server" then return true end
+            return orig(client)
+          end
+        '';
 
         # qml-lsp =
         #   entryAnywhere
@@ -107,36 +105,26 @@ in {
         #     })
         #   '';
 
-        slint =
-          entryAnywhere
-          /*
-          lua
-          */
-          ''
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = "slint",
-              callback = function()
-                vim.bo.indentexpr = ""
-                vim.bo.smartindent = true
-                vim.bo.tabstop = 4
-                vim.bo.shiftwidth = 4
-              end
-            })
-          '';
+        slint = entryAnywhere /* lua */ ''
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "slint",
+            callback = function()
+              vim.bo.indentexpr = ""
+              vim.bo.smartindent = true
+              vim.bo.tabstop = 4
+              vim.bo.shiftwidth = 4
+            end
+          })
+        '';
 
-        mini-pairs-rust =
-          entryAnywhere
-          /*
-          lua
-          */
-          ''
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = "rust",
-              callback = function()
-                vim.keymap.set('i', "'", "'", { buffer = true, remap = false, silent = true })
-              end,
-            })
-          '';
+        mini-pairs-rust = entryAnywhere /* lua */ ''
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "rust",
+            callback = function()
+              vim.keymap.set('i', "'", "'", { buffer = true, remap = false, silent = true })
+            end,
+          })
+        '';
 
         # treesitter-indent = entryAnywhere ''
         #   vim.api.nvim_create_autocmd("FileType", {

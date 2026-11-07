@@ -1,5 +1,6 @@
-{lib, ...}:
-with lib; {
+{ lib, ... }:
+with lib;
+{
   options.colors = {
     base00 = mkOption {
       type = types.str;

@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   programs.niri.settings.layout = with config.colors; {
     border = {
       enable = true;

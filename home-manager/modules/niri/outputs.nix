@@ -11,8 +11,8 @@
       };
 
       position = {
-        x = 1440;
-        y = 630;
+        x = 2560;
+        y = 0;
       };
 
       transform = {
@@ -31,11 +31,11 @@
 
       position = {
         x = 0;
-        y = 0;
+        y = 128;
       };
 
       transform = {
-        rotation = 270;
+        rotation = 0;
       };
     };
   };

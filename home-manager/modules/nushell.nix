@@ -4,6 +4,8 @@
   programs.nushell = {
     enable = true;
 
+    loadSessionVariables = true;
+
     settings = {
       show_banner = false;
       buffer_editor = "neovide";
@@ -28,64 +30,60 @@
       x = "exit";
     };
 
-    extraConfig =
-      /*
-      nu
-      */
-      ''
-        $env.flake_path = do { $env.home | path join ".nix" }
+    extraConfig = /* nu */ ''
+      $env.flake_path = do { $env.home | path join ".nix" }
 
-        def "nx" [...args] {
-          let task = { nh os switch $env.flake_path; nh home switch $env.flake_path }
+      def "nx" [...args] {
+        let task = { nh os switch $env.flake_path; nh home switch $env.flake_path }
 
-          let start = date now
-          let result = do $task
-          let end = date now
+        let start = date now
+        let result = do $task
+        let end = date now
 
-          let total = $end - $start | format duration sec
-          let body = $"Finished in ($total)"
-          notify-send -u low "System Rebuilt!" $body
-          return $result
-        }
+        let total = $end - $start | format duration sec
+        let body = $"Finished in ($total)"
+        notify-send -u low "System Rebuilt!" $body
+        return $result
+      }
 
-        def "nx os" [...args] {
-          let task = { nh os switch $env.flake_path }
+      def "nx os" [...args] {
+        let task = { nh os switch $env.flake_path }
 
-          let start = date now
-          let result = do $task
-          let end = date now
+        let start = date now
+        let result = do $task
+        let end = date now
 
-          let total = $end - $start | format duration sec
-          let body = $"Finished in ($total)"
-          notify-send -u low "Nixos Rebuilt!" $body
-          return $result
-        }
+        let total = $end - $start | format duration sec
+        let body = $"Finished in ($total)"
+        notify-send -u low "Nixos Rebuilt!" $body
+        return $result
+      }
 
-        def "nx hm" [...args] {
-          let task = { nh home switch $env.flake_path }
+      def "nx hm" [...args] {
+        let task = { nh home switch $env.flake_path }
 
-          let start = date now
-          let result = do $task
-          let end = date now
+        let start = date now
+        let result = do $task
+        let end = date now
 
-          let total = $end - $start | format duration sec
-          let body = $"Finished in ($total)"
-          notify-send -u low "Home Manager Rebuilt!" $body
-          return $result
-        }
+        let total = $end - $start | format duration sec
+        let body = $"Finished in ($total)"
+        notify-send -u low "Home Manager Rebuilt!" $body
+        return $result
+      }
 
-        def "nx up" [...args] {
-          let task = { nix flake update --flake $env.flake_path }
+      def "nx up" [...args] {
+        let task = { nix flake update --flake $env.flake_path }
 
-          let start = date now
-          let result = do $task
-          let end = date now
+        let start = date now
+        let result = do $task
+        let end = date now
 
-          let total = $end - $start | format duration sec
-          let body = $"Finished in ($total)"
-          notify-send -u low "Flake Updated!" $body
-          return $result
-        }
-      '';
+        let total = $end - $start | format duration sec
+        let body = $"Finished in ($total)"
+        notify-send -u low "Flake Updated!" $body
+        return $result
+      }
+    '';
   };
 }

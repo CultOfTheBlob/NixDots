@@ -8,13 +8,13 @@
         sub_dirs = [
           {
             name = "#{name}";
-            sub_dirs = [];
+            sub_dirs = [ ];
           }
         ];
       }
       {
         name = "nix";
-        sub_dirs = [];
+        sub_dirs = [ ];
       }
     ];
     files = [
@@ -24,27 +24,19 @@
       }
       {
         path = "lua/#{name}/init.lua";
-        contents =
-          /*
-          lua
-          */
-          ''
-            local M = {}
+        contents = /* lua */ ''
+          local M = {}
 
-            function M.setup(opts) end
+          function M.setup(opts) end
 
-            return M
-          '';
+          return M
+        '';
       }
       {
         path = ".luacheckrc";
-        contents =
-          /*
-          lua
-          */
-          ''
-            globals = { "vim" }
-          '';
+        contents = /* lua */ ''
+          globals = { "vim" }
+        '';
       }
       {
         path = ".rgignore";
@@ -95,19 +87,15 @@
       }
       {
         path = ".justfile";
-        contents =
-          /*
-          just
-          */
-          ''
-            default: run
+        contents = /* just */ ''
+          default: run
 
-            run:
-              @nvim-dev
+          run:
+            @nvim-dev
 
-            push:
-              @git push
-          '';
+          push:
+            @git push
+        '';
       }
     ];
     build = [
@@ -150,7 +138,10 @@
         ];
       }
     ];
-    included_paths = ["lua" "nix"];
-    excluded_paths = [];
+    included_paths = [
+      "lua"
+      "nix"
+    ];
+    excluded_paths = [ ];
   };
 }
