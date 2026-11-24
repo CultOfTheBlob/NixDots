@@ -30,14 +30,12 @@
 
       keys = {
         normal = {
-          "C-g" = [
-            ":write-all"
-            ":insert-output lazygit >/dev/tty"
-            ":redraw"
-            ":reload-all"
-          ];
           "C-]" = "goto_next_buffer";
           "C-[" = "goto_previous_buffer";
+        };
+
+        insert = {
+          "C-space" = "completion";
         };
       };
     };

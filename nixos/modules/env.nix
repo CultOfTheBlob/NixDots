@@ -1,7 +1,7 @@
-{ user, ... }: {
+{user, ...}: {
   environment.sessionVariables = {
     TERMINAL = "kitty";
-    EDITOR = "helix";
+    EDITOR = "hx";
     BROWSER = "zen-beta";
 
     NIXOS_OZONE_WL = "1";

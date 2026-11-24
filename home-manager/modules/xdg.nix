@@ -12,9 +12,9 @@
         "x-scheme-handler/about" = [ "zen.desktop" ];
         "x-scheme-handler/unknown" = [ "zen.desktop" ];
 
-        "text/plain" = [ "neovide.desktop" ];
-        "text/markdown" = [ "neovide.desktop" ];
-        "application/json" = [ "neovide.desktop" ];
+        "text/plain" = [ "zed.desktop" ];
+        "text/markdown" = [ "zed.desktop" ];
+        "application/json" = [ "zed.desktop" ];
 
         "application/pdf" = [ "org.kde.okular.desktop" ];
 

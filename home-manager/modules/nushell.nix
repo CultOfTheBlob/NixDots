@@ -1,3 +1,10 @@
+{ pkgs, ... }:
+let
+  nordTheme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/nushell/nu_scripts/refs/heads/main/themes/nu-themes/nord.nu";
+    hash = "sha256-1EHOWrrBhE3RmWWOgIdZdQBnK71FspdkDe4Mt0M488k=";
+  };
+in
 {
   home.shell.enableNushellIntegration = true;
 
@@ -8,12 +15,13 @@
 
     settings = {
       show_banner = false;
-      buffer_editor = "neovide";
+      buffer_editor = "helix";
       table.mode = "rounded";
+      edit_mode = "helix";
       cursor_shape = {
-        vi_normal = "block";
-        vi_insert = "block";
-        emacs = "line";
+        helix_insert = "line";
+        helix_normal = "block";
+        helix_select = "underscore";
       };
     };
 
@@ -31,6 +39,35 @@
     };
 
     extraConfig = /* nu */ ''
+      source ${nordTheme}
+
+      $env.ls_colors = (${pkgs.vivid}/bin/vivid generate nord)
+      $env.config.ls.use_ls_colors = true
+      $env.config.completions.use_ls_colors = true
+
+      $env.config.keybindings ++= [
+        {
+          name: tab_ide_completion_menu
+          modifier: none
+          keycode: tab
+          mode: [helix_insert helix_normal helix_insert]
+          event: {
+            until: [
+              { send: menu name: ide_completion_menu }
+              { send: menunext }
+              { edit: complete }
+            ]
+          }
+        }
+        {
+          name: disable_ctrl_space
+          modifier: control
+          keycode: char_u0020
+          mode: [helix_insert helix_normal helix_insert]
+          event: null
+        }
+      ]
+
       $env.flake_path = do { $env.home | path join ".nix" }
 
       def "nx" [...args] {
@@ -83,6 +120,21 @@
         let body = $"Finished in ($total)"
         notify-send -u low "Flake Updated!" $body
         return $result
+      }
+
+      def "nx ed" [...args] {
+        ^$env.editor $env.flake_path
+      }
+
+      def "nx mn" [...args] {
+        ^zellij --new-session-with-layout nix
+      }
+
+
+      def --env "nix shell" [...args: string] {
+          with-env { IN_NIX_SHELL: "true" } {
+              ^nix shell ...$args
+          }
       }
     '';
   };

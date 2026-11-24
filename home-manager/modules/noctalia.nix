@@ -15,7 +15,7 @@
           border_width = 1.0;
           end = [
             "notifications"
-            "tray"
+            # "tray"
             "spacer-20"
             "audio_visualizer"
             "media"
@@ -267,7 +267,7 @@
         panel = {
           clipboard_placement = "attached";
           clipboard_position = "auto";
-          launcher_categories = false;
+          # launcher_categories = false;
           launcher_placement = "attached";
           open_near_click_control_center = true;
           polkit_placement = "attached";
@@ -475,7 +475,7 @@
         workspaces = {
           focused_output_only = true;
           labels_only_when_occupied = true;
-          show_all_outputs = true;
+          monitors = [ "*" ];
           show_tooltip = false;
           style = "focus_hint";
           actions = {

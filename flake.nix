@@ -136,7 +136,7 @@
           inputs.niri.homeModules.niri
           inputs.noctalia.homeModules.default
           inputs.stylix.homeModules.stylix
-          inputs.nvf.homeManagerModules.default
+          inputs.nvf.homeModules.default
           inputs.nixcord.homeModules.nixcord
           inputs.spicetify-nix.homeManagerModules.default
           inputs.zen-browser.homeModules.default

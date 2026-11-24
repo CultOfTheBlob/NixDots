@@ -116,7 +116,15 @@
               foreground = "p:celeste-blue";
               leading_diamond = "";
               style = "diamond";
-              template = "❯";
+              template = ''
+                {{- if .Env.DEVENV_ROOT -}}
+                  ~>
+                {{- else if .Env.IN_NIX_SHELL -}}
+                  ->>
+                {{- else -}}
+                  ->
+                {{- end -}}
+              '';
               trailing_diamond = "";
               type = "text";
             }
@@ -128,7 +136,7 @@
       transient_prompt = {
         background = "transparent";
         foreground = "p:terminal-blue";
-        template = "❯";
+        template = "$> ";
       };
 
       final_space = true;

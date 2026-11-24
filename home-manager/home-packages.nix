@@ -51,6 +51,7 @@ in
     speedtest-rs
     drift
     bluetui
+    zapp
 
     # Command line utils
     linuxHeaders
@@ -81,11 +82,12 @@ in
     obsidian
     gparted
     qalculate-gtk
-    keymapp
     prismlauncher
     libreoffice
     foliate
     davinci-resolve
+    audacity
+    brave-origin
 
     # Utils
     inputs.quickshell.packages.${system}.default
